@@ -40,7 +40,7 @@ This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXeru
 ## How to use
 
 ### Singularity installation
-Singularity is a free, cross-platform and open-source computer program that performs operating-system-level virtualisation also known as [containerization]https://en.wikipedia.org/wiki/OS-level_virtualisation) One of the main uses of Singularity is to bring containers and reproducibility to scientific computing and the high-performance computing (HPC) world. The Singularity installation instructions can be found in the [the singularity documentation](https://www.sylabs.io/docs/).
+Singularity is a free, cross-platform and open-source computer program that performs operating-system-level virtualisation also known as [containerization](https://en.wikipedia.org/wiki/OS-level_virtualisation) One of the main uses of Singularity is to bring containers and reproducibility to scientific computing and the high-performance computing (HPC) world. The Singularity installation instructions can be found in the [the singularity documentation](https://www.sylabs.io/docs/).
 
 ### Container build instructions
 The containers in this repository can be pulled directly from the [singularity-hub](https://www.singularity-hub.org). To build the container you can, therefore, use the following command.
