@@ -113,6 +113,11 @@ of the building process.
         && mkdir -p /etc/udev/rules.d/ \
         && cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/"
 
+	### Copy .singularity_bashrc repository file from panda_autograsp_singularity_recipes repository ###
+    bash -c "cd /tmp \
+        && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
+        && cp deep_robotics_singularity_recipes/.singularity_bashrc /.singularity_bashrc"
+
     ## Install miniconda3 ##
     apt-get -qq update && apt-get -qq -y install curl bzip2 \
         && curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
@@ -129,10 +134,12 @@ of the building process.
     ## Install jupyter notebooks
     conda install -y jupyter
 
-	### Copy .singularity_bashrc repository file from panda_autograsp_singularity_recipes repository ###
+    ## Install tensorflow-gpu
+    conda install -y tensorflow-gpu
+
+    ## Add conda initialization
     bash -c "cd /tmp \
-        && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
-        && cp deep_robotics_singularity_recipes/.singularity_bashrc /.singularity_bashrc"
+        && cat deep_robotics_singularity_recipes/.conda_init >> /.singularity_bashrc"
 
     ## Remove unused packages ##
     apt-get -q -y upgrade
