@@ -1,6 +1,7 @@
 # Deep Robotics singularity recipe repository
 
-[![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/2876)
+[![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/3134)
+
 
 This repository contains the singularity recipes I use for my robotics projects. The recipes in this repository can also be found on [www.singularity-hub.org](https://www.singularity-hub.org)
 
