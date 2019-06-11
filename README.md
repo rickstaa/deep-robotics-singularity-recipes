@@ -97,7 +97,7 @@ If you also want to access the files in the container folder without having to u
 1. Change the group owner to your user group
 
  ```
- sudo chgrp <YOUR_USER_NAME> ./<YOUR_IMAGE_NAME>
+ sudo chgrp -R <YOUR_USER_NAME> ./<YOUR_IMAGE_NAME>
  ```
 
 2. Give your user group *read and write* access to the <YOUR_IMAGE_NAME> folder.
