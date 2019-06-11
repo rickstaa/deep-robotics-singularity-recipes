@@ -5,15 +5,37 @@
 This repository contains the singularity recipes I use for my robotics projects. The recipes in this repository can also be found on [www.singularity-hub.org](https://www.singularity-hub.org)
 
 ## Recipe overview
-The following recipes are present in this repository:
+This repository contains both public and private recipe files. The private recipe files can only be build with the right permissions. To obtain the right permissions to a private recipe contact me at [github.com/rickstaa](https://www.github.com/rickstaa).
 
-- **tensorflow-latest-gpu-jupyter-ros-kinetic-xenial.def**:
+### Public repositories
 
-### Tensorflow-latest-gpu-jupyter-ros-kinetic-xenial
+- **panda-ros_kinetic-miniconda3-tensorflow_gpu**:
+
+#### panda-ros_kinetic-miniconda3-tensorflow_gpu
 This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXerus) container with the following packages installed in it:
+
 - [Latest stable tensorflow release](https://www.tensorflow.org)
 - [Jupyter notebook](https://jupyter.org/)
 - [ROS kinetic](https://wiki.ros.org/kinetic)
+- [Miniconda3](https://docs.conda.io/en/latest/miniconda.html)
+- [conda tensorflow-gpu](https://anaconda.org/anaconda/tensorflow-gpu)
+- [libfranka](https://github.com/frankaemika/libfranka)
+- [panda_simulation package](https://github.com/rickstaa/panda_simulation)
+- [libfreenect2](https://github.com/OpenKinect/libfreenect2)
+
+### Private repositories
+
+#### panda-autograsp-ros_kinetic
+This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXerus) container with the following packages installed in it:
+
+- [Latest stable tensorflow release](https://www.tensorflow.org)
+- [Jupyter notebook](https://jupyter.org/)
+- [ROS kinetic](https://wiki.ros.org/kinetic)
+- [Miniconda3](https://docs.conda.io/en/latest/miniconda.html)
+- [conda tensorflow-gpu](https://anaconda.org/anaconda/tensorflow-gpu)
+- [libfranka](https://github.com/frankaemika/libfranka)
+- [panda_autograsp package](https://github.com/rickstaa/panda_autograsp_ws)
+- [libfreenect2](https://github.com/OpenKinect/libfreenect2)
 
 ## How to use
 
