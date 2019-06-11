@@ -5,11 +5,11 @@
 This repository contains the singularity recipes I use for my robotics projects. The recipes in this repository can also be found on [www.singularity-hub.org](https://www.singularity-hub.org)
 
 ## Recipe overview
-This repository contains both public and private recipe files. The private recipe files can only be build with the right permissions. To obtain the right permissions to a private recipe contact me at [github.com/rickstaa](https://www.github.com/rickstaa).
+This repository contains both public and private recipe files. The private recipe files can only be built with the right permissions. To obtain the right permissions to a private recipe contact me at [github.com/rickstaa](https://www.github.com/rickstaa).
 
-### Public repositories
+### Public recipes
 
-- **panda-ros_kinetic-miniconda3-tensorflow_gpu**:
+- **panda-ros_kinetic-miniconda3-tensorflow_gpu**
 
 #### panda-ros_kinetic-miniconda3-tensorflow_gpu
 This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXerus) container with the following packages installed in it:
@@ -23,7 +23,7 @@ This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXeru
 - [panda_simulation package](https://github.com/rickstaa/panda_simulation)
 - [libfreenect2](https://github.com/OpenKinect/libfreenect2)
 
-### Private repositories
+### Private recipes
 
 #### panda-autograsp-ros_kinetic
 This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXerus) container with the following packages installed in it:
