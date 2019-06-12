@@ -59,6 +59,9 @@ After the container is built you can use the singularity `shell`, `start` and `r
 
 Additionally, you can also add the `--writable` parameter to the `run command` to receive write permissions.
 
+### Tensorflow-gpu use instructions
+The tensorflow-gpu package is present in the `tf-gpu` conda enviroment. This enviroment can be loaded running the `conda activate tf-gpu` command.
+
 ## Additional documentation
 
 ### Add a visual code IDE to the singularity image
