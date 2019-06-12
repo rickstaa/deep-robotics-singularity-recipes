@@ -47,12 +47,13 @@ of the building process.
     ## Install miniconda3 ##
     apt -qq update && apt -qq -y install curl bzip2 \
         && curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
-        && bash /tmp/miniconda.sh -bfp /usr/local \
+        && bash /tmp/miniconda.sh -bfp /opt/miniconda3 \
         && rm -rf /tmp/miniconda.sh \
         && conda install -q -y python=3 \
         && conda update conda \
         && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
-        && conda clean --all --yes
+        && conda clean --all --yes \
+        && export PATH="/opt/miniconda3/:$PATH"
 
     ## Create tensorflow gpu environment
     conda create -q -y --name tf-gpu
@@ -84,7 +85,7 @@ of the building process.
     bash -c "cd / \
         && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
         && cp /deep_robotics_singularity_recipes/.singularity_bashrc /.singularity_bashrc \
-    #    && cat /deep_robotics_singularity_recipes/.conda_init >> /.singularity_bashrc \
+        && cat /deep_robotics_singularity_recipes/.conda_init >> /.singularity_bashrc \
         && rm -rf /deep_robotics_singularity_recipes"
 
     ## Remove unused packages ##
