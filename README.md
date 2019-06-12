@@ -1,15 +1,16 @@
 # Deep Robotics singularity recipe repository
 
-[![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/2876)
+[![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/3134)
+
 
 This repository contains the singularity recipes I use for my robotics projects. The recipes in this repository can also be found on [www.singularity-hub.org](https://www.singularity-hub.org)
 
 ## Recipe overview
-This repository contains both public and private recipe files. The private recipe files can only be build with the right permissions. To obtain the right permissions to a private recipe contact me at [github.com/rickstaa](https://www.github.com/rickstaa).
+This repository contains both public and private recipe files. The private recipe files can only be built with the right permissions. To obtain the right permissions to a private recipe contact me at [github.com/rickstaa](https://www.github.com/rickstaa).
 
-### Public repositories
+### Public recipes
 
-- **panda-ros_kinetic-miniconda3-tensorflow_gpu**:
+- **panda-ros_kinetic-miniconda3-tensorflow_gpu**
 
 #### panda-ros_kinetic-miniconda3-tensorflow_gpu
 This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXerus) container with the following packages installed in it:
@@ -23,7 +24,7 @@ This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXeru
 - [panda_simulation package](https://github.com/rickstaa/panda_simulation)
 - [libfreenect2](https://github.com/OpenKinect/libfreenect2)
 
-### Private repositories
+### Private recipes
 
 #### panda-autograsp-ros_kinetic
 This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXerus) container with the following packages installed in it:
@@ -40,7 +41,7 @@ This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXeru
 ## How to use
 
 ### Singularity installation
-Singularity is a free, cross-platform and open-source computer program that performs operating-system-level virtualisation also known as [containerization]https://en.wikipedia.org/wiki/OS-level_virtualisation) One of the main uses of Singularity is to bring containers and reproducibility to scientific computing and the high-performance computing (HPC) world. The Singularity installation instructions can be found in the [the singularity documentation](https://www.sylabs.io/docs/).
+Singularity is a free, cross-platform and open-source computer program that performs operating-system-level virtualisation also known as [containerization](https://en.wikipedia.org/wiki/OS-level_virtualisation) One of the main uses of Singularity is to bring containers and reproducibility to scientific computing and the high-performance computing (HPC) world. The Singularity installation instructions can be found in the [the singularity documentation](https://www.sylabs.io/docs/).
 
 ### Container build instructions
 The containers in this repository can be pulled directly from the [singularity-hub](https://www.singularity-hub.org). To build the container you can, therefore, use the following command.
@@ -57,6 +58,9 @@ After the container is built you can use the singularity `shell`, `start` and `r
 - **Without Nvidia GPU:** `$ singularity run <YOUR_IMAGE_NAME>`
 
 Additionally, you can also add the `--writable` parameter to the `run command` to receive write permissions.
+
+### Tensorflow-gpu use instructions
+The tensorflow-gpu package is present in the `tf-gpu` conda enviroment. This enviroment can be loaded running the `conda activate tf-gpu` command.
 
 ## Additional documentation
 
@@ -97,7 +101,7 @@ If you also want to access the files in the container folder without having to u
 1. Change the group owner to your user group
 
  ```
- sudo chgrp <YOUR_USER_NAME> ./<YOUR_IMAGE_NAME>
+ sudo chgrp -R <YOUR_USER_NAME> ./<YOUR_IMAGE_NAME>
  ```
 
 2. Give your user group *read and write* access to the <YOUR_IMAGE_NAME> folder.

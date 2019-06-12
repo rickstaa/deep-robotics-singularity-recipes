@@ -41,8 +41,8 @@ of the building process.
         && git clone --recursive --branch kinetic-devel https://github.com/rickstaa/panda_autograsp_ws.git src"
 
     ## Setup ros source list ##
-	sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-    apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+    sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+    apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
     bash -c "source /opt/ros/kinetic/setup.sh"
 
     ## Install packages ##
@@ -135,9 +135,8 @@ of the building process.
     ## Install GQCNN dependencies
     #apt install -q -y pkg-config # Needed for matplotlib
 
-    ### Install the GQCNN python Library ##
-    #bash -c "cd /panda_auto_grasp_ws/src/gqcnn \
-    #    && pip install ."
+    ## Install tensorflow-gpu
+    conda install -y tensorflow-gpu
 
 	### Copy .singularity_bashrc repository file from panda_autograsp_singularity_recipes repository ###
     bash -c "cd / \
