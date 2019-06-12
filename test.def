@@ -24,25 +24,6 @@ of the building process.
 
     ## Install packages ##
     apt update
-    apt install -q -y\
-        wget \
-        less \
-        vim \
-        git-core \
-        bash-completion \
-        htop \
-        ssh \
-		tar \
-		libevent-dev \
-        libncurses-dev \
-        tmux \
-		nautilus \
-        gedit \
-        x11-xserver-utils \
-        ssh \
-        software-properties-common \
-        curl \
-        iputils-ping
 
     ## Install miniconda3 ##
     apt -qq update && apt -qq -y install curl bzip2 \
@@ -54,23 +35,6 @@ of the building process.
         && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
         && conda clean --all --yes
 
-    ## Install MoveIt and check for panda_auto_grasp package dependencies
-    rosdep update
-    apt update
-    apt dist-upgrade -y
-    apt install -q -y ros-kinetic-catkin python-catkin-tools
-    apt install -q -y ros-kinetic-moveit
-    apt install -q -y \
-       ros-kinetic-moveit-ros-move-group \
-       ros-kinetic-controller-manager* \
-       ros-kinetic-moveit* \
-       ros-kinetic-effort-controllers \
-       ros-kinetic-joint-trajectory-controller \
-       ros-kinetic-gazebo-ros* \
-       ros-kinetic-rviz* \
-       ros-kinetic-joint-state-controller* \
-       libboost-filesystem-dev \
-       libjsoncpp-dev
 
     ### Copy .singularity_bashrc repository file from panda_autograsp_singularity_recipes repository ###
     bash -c "cd / \
@@ -80,16 +44,9 @@ of the building process.
         && cat /.conda_init >> /.singularity_bashrc \
         && rm -rf /deep_robotics_singularity_recipes"
 
-    ## Create tensorflow gpu environment
-    CONDA_PATH=$(whereis conda | awk '{print $2}' |  awk -F '\\miniconda3' '{print $1"miniconda3"}')
-    __conda_setup="$('$CONDA_PATH/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    eval "$__conda_setup"
-    unset __conda_setup
-
-    ## Create conda tensorflow enviroment    
+    ## Create conda tensorflow enviroment
+    . /.conda_init
     conda create -q -y --name tf-gpu
-    export PATH="$PATH:/opt/miniconda3/bin:"
-    source /.conda_init # initialize conda
     conda activate tf-gpu
 
     ## Install jupyter notebooks
