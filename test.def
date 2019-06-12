@@ -22,16 +22,6 @@ of the building process.
 =====================================================================
 ' > /dev/null
 
-    ## Create catkin workspace folder and clone the panda_simulation repository ##
-    bash -c "mkdir -p /panda_autograsp_ws \
-        && cd /panda_autograsp_ws \
-        && git clone https://github.com/rickstaa/panda_simulation.git src"
-
-    ## Setup ros source list ##
-    sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-    apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-    bash -c "source /opt/ros/kinetic/setup.sh"
-
     ## Install packages ##
     apt update
     apt install -q -y\
@@ -53,19 +43,16 @@ of the building process.
         software-properties-common \
         curl \
         iputils-ping
-    apt clean
 
-    ## Install libfranca from source ##
-    bash -c "cd / \
-        && apt install -q -y ros-kinetic-libfranka ros-kinetic-franka-ros \
-        && apt install -q -y build-essential cmake libpoco-dev libeigen3-dev \
-        && apt remove -y "*libfranka*" \
-        && git clone --recursive https://github.com/frankaemika/libfranka.git \
-        && cd /libfranka \
-        && mkdir build \
-        && cd build \
-        && cmake -DCMAKE_BUILD_TYPE=Release .. \
-        && cmake --build ."
+    ## Install miniconda3 ##
+    apt-get -qq update && apt-get -qq -y install curl bzip2 \
+        && curl -sSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
+        && bash /tmp/miniconda.sh -bfp /opt/miniconda3 \
+        && rm -rf /tmp/miniconda.sh \
+        && conda install -qq -y python=3 \
+        && conda update conda \
+        && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
+        && conda clean -qq --all --yes
 
     ## Install MoveIt and check for panda_auto_grasp package dependencies
     rosdep update
@@ -85,56 +72,12 @@ of the building process.
        libboost-filesystem-dev \
        libjsoncpp-dev
 
-    ### Build panda_auto_grasp project packages
-    bash -c "cd /panda_autograsp_ws \
-        && rosdep install --from-paths src --ignore-src --rosdistro kinetic -y --skip-keys libfranka \
-        && source /opt/ros/kinetic/setup.sh \
-        && catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build"
-
-    ## Install kinect2.0 Library ##
-    apt update
-    apt install -q -y \
-        build-essential \
-        cmake \
-        pkg-config \
-        libusb-1.0-0-dev \
-        libturbojpeg \
-        libjpeg-turbo8-dev \
-        libglfw3-dev \
-        libopenni2-dev
-    bash -c "git clone https://github.com/OpenKinect/libfreenect2.git \
-        && cd libfreenect2 \
-        && pwd \
-        && mkdir build \
-        && cd build \
-        && cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/freenect2 \
-        && make \
-        && make install \
-        && mkdir -p /etc/udev/rules.d/ \
-        && cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/"
-
 	### Copy .singularity_bashrc repository file from panda_autograsp_singularity_recipes repository ###
     bash -c "cd / \
         && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
         && cp /deep_robotics_singularity_recipes/.singularity_bashrc /.singularity_bashrc \
         && cat /deep_robotics_singularity_recipes/.conda_init >> /.singularity_bashrc \
         && rm -rf /deep_robotics_singularity_recipes"
-
-    ## Install miniconda3 ##
-    apt -qq update && apt -qq -y install curl bzip2 \
-        && curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
-        && bash /tmp/miniconda.sh -bfp /usr/local \
-        && rm -rf /tmp/miniconda.sh \
-        && conda install -y python=3 \
-        && conda update conda \
-        && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
-        && conda clean --all --yes \
-        && conda tensorflow-gpu
-
-    ## Install jupyter notebooks
-    conda install -y jupyter
-
-    ## Append conda initialization to .singularity_bashrc
 
     ## Remove unused packages ##
     apt -q -y upgrade
@@ -153,4 +96,4 @@ of the building process.
     LC_NUMERIC="en_US.UTF-8"
 
     ## Add miniconda to path ##
-    export PATH="/opt/conda/bin:$PATH"
+    #export PATH="/opt/conda/bin:$PATH"

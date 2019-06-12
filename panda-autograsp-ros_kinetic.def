@@ -22,6 +22,19 @@ of the building process.
 =====================================================================
 ' > /dev/null
 
+    ## Install miniconda3 ##
+    apt -qq update && apt -qq -y install curl bzip2 \
+        && curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
+        && bash /tmp/miniconda.sh -bfp /usr/local \
+        && rm -rf /tmp/miniconda.sh \
+        && conda install -q -y python=3 \
+        && conda update conda \
+        && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
+        && conda clean --all --yes
+
+    ## Install jupyter notebooks
+    conda install -q -y jupyter
+
     ## Create catkin workspace folder and clone panda_auto_grasp_ws repository
     bash -c "mkdir -p /panda_autograsp_ws \
         && cd /panda_autograsp_ws \
@@ -33,8 +46,7 @@ of the building process.
     bash -c "source /opt/ros/kinetic/setup.sh"
 
     ## Install packages ##
-    apt-get update
-    apt-get install -q -y\
+    apt install -q -y\
         wget \
         less \
         vim \
@@ -53,27 +65,26 @@ of the building process.
         software-properties-common \
         curl \
         iputils-ping
-    apt-get clean
 
     ## Install libfranca from source ##
-    bash -c "cd / \
-        && apt-get install -q -y ros-kinetic-libfranka ros-kinetic-franka-ros \
-        && apt-get install -q -y build-essential cmake libpoco-dev libeigen3-dev \
-        && apt remove -y "*libfranka*" \
-        && git clone --recursive https://github.com/frankaemika/libfranka.git \
-        && cd /libfranka \
-        && mkdir build \
-        && cd build \
-        && cmake -DCMAKE_BUILD_TYPE=Release .. \
-        && cmake --build ."
+    #bash -c "cd / \
+    #    && apt install -q -y ros-kinetic-libfranka ros-kinetic-franka-ros \
+    #    && apt install -q -y build-essential cmake libpoco-dev libeigen3-dev \
+    #    && apt remove -y "*libfranka*" \
+    #    && git clone --recursive https://github.com/frankaemika/libfranka.git \
+    #    && cd /libfranka \
+    #    && mkdir build \
+    #    && cd build \
+    #    && cmake -DCMAKE_BUILD_TYPE=Release .. \
+    #    && cmake --build ."
 
     ## Install MoveIt and check for panda_auto_grasp package dependencies
     rosdep update
-    apt-get update
-    apt-get dist-upgrade -y
-    apt-get install -q -y ros-kinetic-catkin python-catkin-tools
-    apt-get install -q -y ros-kinetic-moveit
-    apt-get install -q -y \
+    apt update
+    apt dist-upgrade -y
+    apt install -q -y ros-kinetic-catkin python-catkin-tools
+    apt install -q -y ros-kinetic-moveit
+    apt install -q -y \
        ros-kinetic-moveit-ros-move-group \
        ros-kinetic-controller-manager* \
        ros-kinetic-moveit* \
@@ -86,14 +97,14 @@ of the building process.
        libjsoncpp-dev
 
     ### Build panda_auto_grasp project packages
-    bash -c "cd /panda_autograsp_ws \
-        && rosdep install --from-paths src --ignore-src --rosdistro kinetic -y --skip-keys libfranka \
-        && source /opt/ros/kinetic/setup.sh \
-        && catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build"
+    #bash -c "cd /panda_autograsp_ws \
+    #    && rosdep install --from-paths src --ignore-src --rosdistro kinetic -y --skip-keys libfranka \
+    #    && source /opt/ros/kinetic/setup.sh \
+    #    && catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build"
 
     ## Install kinect2.0 Library ##
-    apt-get update
-    apt-get install -q -y \
+    apt update
+    apt install -q -y \
         build-essential \
         cmake \
         pkg-config \
@@ -113,32 +124,30 @@ of the building process.
         && mkdir -p /etc/udev/rules.d/ \
         && cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/"
 
-    ## Install miniconda3 ##
-    apt-get -qq update && apt-get -qq -y install curl bzip2 \
-        && curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
-        && bash /tmp/miniconda.sh -bfp /usr/local \
-        && rm -rf /tmp/miniconda.sh \
-        && conda install -y python=3 \
-        && conda update conda \
-        && apt-get -qq -y remove curl bzip2 \
-        && apt-get -qq -y autoremove \
-        && apt-get autoclean \
-        && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
-        && conda clean --all --yes
 
-    ## Install jupyter notebooks
-    conda install -y jupyter
+    ## Create conda enviroment for gqcnn
+    conda create --name tf-gpu
+    conda activate tf-gpu
+
+    ## Install tensorflow-gpu
+    conda install -q -y tensorflow-gpu
+
+    ## Install GQCNN dependencies
+    #apt install -q -y pkg-config # Needed for matplotlib
 
     ### Install the GQCNN python Library ##
     #bash -c "cd /panda_auto_grasp_ws/src/gqcnn \
     #    && pip install ."
 
 	### Copy .singularity_bashrc repository file from panda_autograsp_singularity_recipes repository ###
-    bash -c "cp /panda_autograsp_ws/src/.singularity_bashrc /.singularity_bashrc"
+    bash -c "cd / \
+        && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
+        && cp /deep_robotics_singularity_recipes/.singularity_bashrc /.singularity_bashrc \
+        && cat /deep_robotics_singularity_recipes/.conda_init >> /.singularity_bashrc \
+        && rm -rf /deep_robotics_singularity_recipes"
 
     ## Remove unused packages ##
-    apt-get -q -y upgrade
-    apt-get auto-remove -y
+    apt -q -y upgrade
 
 %runscript
 
