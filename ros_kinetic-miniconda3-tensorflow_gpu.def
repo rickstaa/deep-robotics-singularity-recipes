@@ -80,16 +80,10 @@ of the building process.
         && cat /.conda_init >> /.singularity_bashrc \
         && rm -rf /deep_robotics_singularity_recipes"
 
-    ## Create tensorflow gpu environment
-    CONDA_PATH=$(whereis conda | awk '{print $2}' |  awk -F '\\miniconda3' '{print $1"miniconda3"}')
-    __conda_setup="$('$CONDA_PATH/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    eval "$__conda_setup"
-    unset __conda_setup
-
-    ## Create conda tensorflow enviroment    
+    ## Create conda tensorflow enviroment
+    . /opt/miniconda3/etc/profile.d/conda.sh
+    export PATH="/opt/miniconda3/bin:$PATH"
     conda create -q -y --name tf-gpu
-    export PATH="$PATH:/opt/miniconda3/bin:"
-    source /.conda_init # initialize conda
     conda activate tf-gpu
 
     ## Install jupyter notebooks
