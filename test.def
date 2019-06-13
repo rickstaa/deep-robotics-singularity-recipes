@@ -45,7 +45,8 @@ of the building process.
         && rm -rf /deep_robotics_singularity_recipes"
 
     ## Create conda tensorflow enviroment
-    . /.conda_init
+    . /opt/miniconda3/etc/profile.d/conda.sh
+    export PATH="/opt/miniconda3/bin:$PATH"
     conda create -q -y --name tf-gpu
     conda activate tf-gpu
 

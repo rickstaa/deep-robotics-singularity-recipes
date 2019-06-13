@@ -1,9 +1,8 @@
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-CONDA_PATH="/opt/miniconda3"
+CONDA_PATH=$(whereis conda | awk '{print $2}' |  awk -F '\\miniconda3' '{print $1"miniconda3"}')
 __conda_setup="$('$CONDA_PATH/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-echo $__conda_setup
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
