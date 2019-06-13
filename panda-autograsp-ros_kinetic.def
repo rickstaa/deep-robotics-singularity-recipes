@@ -133,6 +133,7 @@ of the building process.
     ## Install jupyter notebooks
     conda install -y tensorflow-gpu
     conda install -y jupyter
+    conda update --all
 
     ## Remove unused packages ##
     apt -q -y upgrade

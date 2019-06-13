@@ -2,7 +2,7 @@
 # author: Rick Staa
 # github: https://github.com/rickstaa/.singularity_bashrc
 #
-# This script performs some actions that normaly the .bashrc script would 
+# This script performs some actions that normaly the .bashrc script would
 # perform. This script is sourced through a runscript.
 #
 # based on: The script of Zorglub29 at
@@ -91,6 +91,7 @@ fi
 
 # Add user defined aliases
 alias atf='conda activate tf-gpu'
+alias dtf='conda deactivate'
 alias python='/usr/bin/python2'
 alias rsource='. /opt/ros/kinetic/setup.bash'
 alias psource='. /panda_autograsp_ws/devel/setup.bash'
