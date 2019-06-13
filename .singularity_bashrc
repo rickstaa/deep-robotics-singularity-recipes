@@ -90,7 +90,7 @@ else
 fi
 
 # Add user defined aliases
-alias atf_gpu='conda activate tf-gpu'
+alias atf='conda activate tf-gpu'
 alias python='/usr/bin/python2'
 alias rsource='. /opt/ros/kinetic/setup.bash'
 alias psource='. /panda_autograsp_ws/devel/setup.bash'
