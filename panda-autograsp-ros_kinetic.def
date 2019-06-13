@@ -47,13 +47,12 @@ of the building process.
     ## Install miniconda3 ##
     apt -qq update && apt -qq -y install curl bzip2 \
         && curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
-        && bash /tmp/miniconda.sh -bfp /usr/local \
+        && bash /tmp/miniconda.sh -bfp /opt/miniconda3 \
         && rm -rf /tmp/miniconda.sh \
-        && conda install -y python=3 \
+        && conda install -q -y python=3 \
         && conda update conda \
         && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
-        && conda clean --all --yes \
-        && conda tensorflow-gpu
+        && conda clean --all --yes
 
     ## Create catkin workspace folder and clone panda_auto_grasp_ws repository
     bash -c "mkdir -p /panda_autograsp_ws \
