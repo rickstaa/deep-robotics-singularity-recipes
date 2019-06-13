@@ -76,8 +76,7 @@ of the building process.
     bash -c "cd / \
         && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
         && cp /deep_robotics_singularity_recipes/.singularity_bashrc /.singularity_bashrc \
-        && cp /deep_robotics_singularity_recipes/.conda_init /.conda_init \
-        && cat /.conda_init >> /.singularity_bashrc \
+        && cat /deep_robotics_singularity_recipes/.conda_init >> /.singularity_bashrc \
         && rm -rf /deep_robotics_singularity_recipes"
 
     ## Create conda tensorflow enviroment
