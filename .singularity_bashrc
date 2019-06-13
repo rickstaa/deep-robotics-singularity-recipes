@@ -92,7 +92,7 @@ fi
 # Add user defined aliases
 alias atf='conda activate tf-gpu'
 alias dtf='conda deactivate'
-alias python='/usr/bin/python2'
+alias python='/usr/bin/python'
 alias rsource='. /opt/ros/kinetic/setup.bash'
 alias psource='. /panda_autograsp_ws/devel/setup.bash'
 alias pbuild='. /opt/ros/kinetic/setup.bash; catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build'
