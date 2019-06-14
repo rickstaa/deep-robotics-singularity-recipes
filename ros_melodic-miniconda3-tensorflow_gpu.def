@@ -1,9 +1,9 @@
-# Ros kinetic panda_auto_grasp singularity container recipe
+# Ros melodic panda_auto_grasp singularity container recipe
 Bootstrap: docker
-From: osrf/ros:kinetic-desktop-full-xenial
+From: osrf/ros:melodic-desktop-full
 
 %help
-    singularity container with Ros kinetic, gazebo7 and all the other packages needed for the panda_auto_grasp package. Since the panda_auto_grasp package is still under development it is set to private. You therefore need the right git permissions for the singularity image to work.
+    singularity container with Ros melodic, gazebo7 and all the other packages needed for the panda_auto_grasp package. Since the panda_auto_grasp package is still under development it is set to private. You therefore need the right git permissions for the singularity image to work.
 
 %labels
     Maintainer: Rick Staa
@@ -14,8 +14,8 @@ From: osrf/ros:kinetic-desktop-full-xenial
 %post
 
     printf '
-================= panda_autograsp_kinetic container =================
-INFO: Setting up panda_autograsp_kinetic container. As three of the
+================= panda_autograsp_melodic container =================
+INFO: Setting up panda_autograsp_melodic container. As three of the
 repositories that are contained in this container are private you
 will be asked for your github credentials three times at the start
 of the building process.
@@ -32,11 +32,11 @@ of the building process.
         bash-completion \
         htop \
         ssh \
-		tar \
-		libevent-dev \
+	tar \
+	libevent-dev \
         libncurses-dev \
         tmux \
-		nautilus \
+	nautilus \
         gedit \
         x11-xserver-utils \
         ssh \
@@ -58,17 +58,17 @@ of the building process.
     rosdep update
     apt update
     apt dist-upgrade -y
-    apt install -q -y ros-kinetic-catkin python-catkin-tools
-    apt install -q -y ros-kinetic-moveit
+    apt install -q -y ros-melodic-catkin python-catkin-tools
+    apt install -q -y ros-melodic-moveit
     apt install -q -y \
-       ros-kinetic-moveit-ros-move-group \
-       ros-kinetic-controller-manager* \
-       ros-kinetic-moveit* \
-       ros-kinetic-effort-controllers \
-       ros-kinetic-joint-trajectory-controller \
-       ros-kinetic-gazebo-ros* \
-       ros-kinetic-rviz* \
-       ros-kinetic-joint-state-controller* \
+       ros-melodic-moveit-ros-move-group \
+       ros-melodic-controller-manager* \
+       ros-melodic-moveit* \
+       ros-melodic-effort-controllers \
+       ros-melodic-joint-trajectory-controller \
+       ros-melodic-gazebo-ros* \
+       ros-melodic-rviz* \
+       ros-melodic-joint-state-controller* \
        libboost-filesystem-dev \
        libjsoncpp-dev
 
@@ -107,4 +107,4 @@ of the building process.
     LC_NUMERIC="en_US.UTF-8"
 
     ## Add miniconda to path ##
-    #export PATH="$PATH:/opt/miniconda3/bin:"
+    export PATH="$PATH:/opt/miniconda3/bin:"
