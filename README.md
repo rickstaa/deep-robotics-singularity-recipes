@@ -35,7 +35,7 @@ This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXeru
 
 ### Private recipes
 
-#### panda-autograsp-tensorflow-gpu-miniconda4-ros_kinetic-xenial
+#### panda-autograsp-tensorflow-gpu-miniconda3-ros_kinetic-xenial
 This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXerus) container with the following packages installed in it:
 
 - [Latest stable tensorflow release](https://www.tensorflow.org)
