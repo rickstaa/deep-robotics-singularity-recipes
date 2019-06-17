@@ -1,4 +1,4 @@
-# Deep Robotics singularity recipe repository (v0.0.4)
+# Deep Robotics singularity recipe repository (v0.0.5)
 
 [![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/3134)
 
