@@ -17,7 +17,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     Version: v0.0.5
     Type: Private
 
-$enviroment
+%enviroment
 
     ## Set language options ##
     LANG=C.UTF-8 LC_ALL=C.UTF-8
