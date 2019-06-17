@@ -114,10 +114,10 @@ fi
 # Add catkin workspace folder cd alias
 if [ "$(ls -A "/home" 2> /dev/null)" == "" ]; then
    	alias pcd='cd /panda_autograsp_ws/src'
-    alias ccd='cd /
+    alias ccd='cd /'
 else
 	alias pcd='cd $SINGULARITY_CONTAINER/panda_autograsp_ws/src'
-    alias ccd='cd $SINGULARITY_CONTAINER
+    alias ccd='cd $SINGULARITY_CONTAINER'
 fi
 
 # Other aliases
