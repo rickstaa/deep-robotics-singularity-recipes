@@ -25,7 +25,7 @@ $enviroment
 %post
 
     ## Install system packages ##
-    apt-get update --fix-missing
+    apt update --fix-missing
     apt install -q -y\
         wget \
         less \
@@ -51,7 +51,7 @@ $enviroment
         dirmngr \
         gnupg2 \
         lsb-release
-    apt-get clean
+    apt clean
     rm -rf /var/lib/apt/lists/*
 
     ## Add a .singularity_bashrc file to the container ##
@@ -59,15 +59,6 @@ $enviroment
         && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
         && cp /deep_robotics_singularity_recipes/.singularity_bashrc /.singularity_bashrc \
         && rm -rf /deep_robotics_singularity_recipes"
-
-    ## Create tf-gpu enviroment ##
-    conda create -q -y --name tf-gpu
-    conda activate tf-gpu
-
-    ## Install jupyter notebooks
-    conda install -y tensorflow-gpu
-    conda install -y jupyter
-    conda update --all
 
     ## Install miniconda3 ##
     wget --quiet https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /miniconda.sh
@@ -78,13 +69,23 @@ $enviroment
     echo ". /opt/conda/etc/profile.d/conda.sh" >> /.singularity_bashrc
     echo "conda activate tf-gpu" >> /.singularity_bashrc
 
+    ## Create tf-gpu enviroment ##
+    . /opt/conda/etc/profile.d/conda.sh
+    conda create -q -y --name tf-gpu
+    conda activate tf-gpu
+
+    ## Install jupyter notebooks
+    #conda install -y tensorflow-gpu
+    #conda install -y jupyter
+    conda update --all
+
     ## setup ROS keys and sources.list ##
     echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list
     apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
     # install ROS bootstrap tools
-    apt-get update
-    apt-get install --no-install-recommends -y\
+    apt update
+    apt install --no-install-recommends -y\
         python-rosdep \
         python-rosinstall \
         python-vcstools \
@@ -95,10 +96,55 @@ $enviroment
     rosdep update
 
     ## Install ROS kinetic desktop full ##
-    apt-get install ros-kinetic-desktop-full
+    apt update
+    apt install -q -y ros-kinetic-desktop-full
 
-    ## Remove unused packages ##
+    ## Install MoveIt and check for panda_auto_grasp package dependencies
+    rosdep update
+    apt update
+    apt dist-upgrade -y
+    apt install -q -y ros-kinetic-catkin python-catkin-tools
+    apt install -q -y ros-kinetic-moveit
+    apt install -q -y \
+       ros-kinetic-moveit-ros-move-group \
+       ros-kinetic-controller-manager* \
+       ros-kinetic-moveit* \
+       ros-kinetic-effort-controllers \
+       ros-kinetic-joint-trajectory-controller \
+       ros-kinetic-gazebo-ros* \
+       ros-kinetic-rviz* \
+       ros-kinetic-joint-state-controller* \
+       libboost-filesystem-dev \
+       libjsoncpp-dev
+
+    ## Install libfranca from source ##
+    bash -c "cd / \
+        && apt install -q -y ros-kinetic-libfranka ros-kinetic-franka-ros \
+        && apt install -q -y build-essential cmake libpoco-dev libeigen3-dev \
+        && apt remove -y "*libfranka*" \
+        && git clone --recursive https://github.com/frankaemika/libfranka.git \
+        && cd /libfranka \
+        && mkdir build \
+        && cd build \
+        && cmake -DCMAKE_BUILD_TYPE=Release .. \
+        && cmake --build ."
+
+    ## Create catkin workspace folder and clone the panda_simulation repository ##
+    bash -c "mkdir -p /panda_simulation_ws \
+        && cd /aptpanda_simulation_ws \
+        && git clone https://github.com/rickstaa/panda_simulation.git src"
+
+    ### Build panda_simulation project package
+    bash -c "cd /aptpanda_simulation_ws \
+        && rosdep install --from-paths src --ignore-src --rosdistro kinetic -y --skip-keys libfranka \
+        && source /opt/ros/kinetic/setup.sh \
+        && catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build"
+
+    ## Upgrade packages and remove unused packages ##
     apt -q -y upgrade
+    apt autoremove
+    apt autoclean
+    rm -rf /var/lib/apt/lists/*
 
 %runscript
 

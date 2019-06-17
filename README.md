@@ -10,9 +10,19 @@ This repository contains both public and private recipe files. The private recip
 
 ### Public recipes
 
-- **panda-ros_kinetic-miniconda3-tensorflow_gpu**
+- **tensorflow-gpu-miniconda3-ros_kinetic-xenial.def**
+- **panda-tensorflow-gpu-miniconda3-ros_kinetic-xenial.def**
 
-#### panda-ros_kinetic-miniconda3-tensorflow_gpu
+
+#### tensorflow-gpu-miniconda3-ros_kinetic-xenial.def
+
+- [Latest stable tensorflow release](https://www.tensorflow.org)
+- [Jupyter notebook](https://jupyter.org/)
+- [ROS kinetic](https://wiki.ros.org/kinetic)
+- [Miniconda3](https://docs.conda.io/en/latest/miniconda.html)
+- [conda tensorflow-gpu](https://anaconda.org/anaconda/tensorflow-gpu)
+
+#### panda-tensorflow-gpu-miniconda3-ros_kinetic-xenial.def
 This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXerus) container with the following packages installed in it:
 
 - [Latest stable tensorflow release](https://www.tensorflow.org)
@@ -22,11 +32,10 @@ This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXeru
 - [conda tensorflow-gpu](https://anaconda.org/anaconda/tensorflow-gpu)
 - [libfranka](https://github.com/frankaemika/libfranka)
 - [panda_simulation package](https://github.com/rickstaa/panda_simulation)
-- [libfreenect2](https://github.com/OpenKinect/libfreenect2)
 
 ### Private recipes
 
-#### panda-autograsp-ros_kinetic
+#### panda-autograsp-tensorflow-gpu-miniconda4-ros_kinetic-xenial
 This recipe sets up a [UBUNTU 16.04 (xenial)](https://wiki.ubuntu.com/XenialXerus) container with the following packages installed in it:
 
 - [Latest stable tensorflow release](https://www.tensorflow.org)

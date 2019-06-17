@@ -1,0 +1,137 @@
+# Ros kinetic panda_auto_grasp singularity container recipe
+Bootstrap: docker
+From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+
+%help
+    HPC Singularity container containing ros_kinetic, tensorflow_gpu & miniconda3.
+
+%labels
+    Maintainer: Rick Staa
+    Github: https://github.com/rickstaa
+    Version v1.0
+    Type: Private
+
+$enviroment
+
+    ## Set language options ##
+    LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+    ## Set ROS distro variable ##
+    ROS_DISTRO=kinetic
+
+    ## Set conda path ##
+    PATH /opt/conda/bin:$PATH
+
+%post
+
+    ## Install system packages ##
+    apt update --fix-missing
+    apt install -q -y\
+        wget \
+        less \
+        vim \
+        git \
+        bash-completion \
+        htop \
+        ssh \
+		tar \
+		libevent-dev \
+        libncurses-dev \
+        tmux \
+		nautilus \
+        gedit \
+        x11-xserver-utils \
+        ssh \
+        software-properties-common \
+        curl \
+        bzip2 \
+        iputils-ping \
+        ca-certificates \
+        figlet \
+        dirmngr \
+        gnupg2 \
+        lsb-release
+    apt clean
+    rm -rf /var/lib/apt/lists/*
+
+    ## Add a .singularity_bashrc file to the container ##
+    bash -c "cd / \
+        && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
+        && cp /deep_robotics_singularity_recipes/.singularity_bashrc /.singularity_bashrc \
+        && rm -rf /deep_robotics_singularity_recipes"
+
+    ## Install miniconda3 ##
+    wget --quiet https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /miniconda.sh
+    /bin/bash /miniconda.sh -b -p /opt/conda
+    rm /miniconda.sh
+    /opt/conda/bin/conda clean -tipsy
+    conda install -q -y python=3
+    conda update conda
+    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+    echo "" >> /.singularity_bashrc
+    echo "# >>> conda initialize >>>" >> /.singularity_bashrc
+    echo ". /opt/conda/etc/profile.d/conda.sh" >> /.singularity_bashrc
+    echo "conda activate tf-gpu" >> /.singularity_bashrc
+    echo "# <<< conda initialize <<<" >> /.singularity_bashrc
+
+    ## Create tf-gpu enviroment ##
+    . /opt/conda/etc/profile.d/conda.sh
+    conda create -q -y --name tf-gpu
+    conda activate tf-gpu
+
+    ## Install jupyter notebooks
+    conda install -y tensorflow-gpu
+    conda install -y jupyter
+    conda update --all
+
+    ## setup ROS keys and sources.list ##
+    echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list
+    apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+    # install ROS bootstrap tools
+    apt update
+    apt install --no-install-recommends -y\
+        python-rosdep \
+        python-rosinstall \
+        python-vcstools
+    rm -rf /var/lib/apt/lists/*
+
+    # bootstrap rosdep
+    rosdep init
+    rosdep update
+
+    ## Install ROS kinetic desktop full ##
+    apt update
+    apt install -q -y ros-kinetic-desktop-full
+
+    ## Install MoveIt and check for panda_auto_grasp package dependencies
+    rosdep update
+    apt update
+    apt dist-upgrade -y
+    apt install -q -y ros-kinetic-catkin python-catkin-tools
+    apt install -q -y ros-kinetic-moveit
+    apt install -q -y \
+       ros-kinetic-moveit-ros-move-group \
+       ros-kinetic-controller-manager* \
+       ros-kinetic-moveit* \
+       ros-kinetic-effort-controllers \
+       ros-kinetic-joint-trajectory-controller \
+       ros-kinetic-gazebo-ros* \
+       ros-kinetic-rviz* \
+       ros-kinetic-joint-state-controller* \
+       libboost-filesystem-dev \
+       libjsoncpp-dev
+
+    ## Upgrade packages and remove unused packages ##
+    apt -q -y upgrade
+    apt autoremove
+    apt autoclean
+    rm -rf /var/lib/apt/lists/*
+
+%runscript
+
+	## Execute the .singularity_bashrc file ##
+	OCI_CMD='/bin/bash'
+	OCI_ARGS='-rcfile /.singularity_bashrc'
+	SINGULARITY_OCI_RUN="${OCI_CMD} ${OCI_ARGS}"
+	exec $SINGULARITY_OCI_RUN
