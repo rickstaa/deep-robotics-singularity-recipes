@@ -105,10 +105,12 @@ of the building process.
         libturbojpeg \
         libjpeg-turbo8-dev \
         libglfw3-dev \
+        libva-dev \
+        libjpeg-dev \
         libopenni2-dev
-    bash -c "git clone https://github.com/OpenKinect/libfreenect2.git \
+    bash -c "cd / \
+        && git clone https://github.com/OpenKinect/libfreenect2.git \
         && cd libfreenect2 \
-        && pwd \
         && mkdir build \
         && cd build \
         && cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/freenect2 \

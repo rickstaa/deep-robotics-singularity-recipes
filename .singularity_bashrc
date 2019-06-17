@@ -9,6 +9,10 @@
 # https://stackoverflow.com/questions/51037873/bash-script-to-perform-action-in-a-singularity-container-it-opens
 #########################################################################
 
+####################################
+### Main bashrc settings ###########
+####################################
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -69,30 +73,39 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# Display pandasim welcome message
-# echo "Pandasim singularity contrainer opened."
-
-# Setup Panda_simulation enviroment (chained to franka_ros and moveit)
-#if [ -f "/panda_autograsp_ws/devel/setup.bash" ]; then
-#	source "/panda_autograsp_ws/devel/setup.bash"
-#fi
-
 # Source git bash completion
 if [ -f "/usr/share/bash-completion/completions/git" ]; then
 	source /usr/share/bash-completion/completions/git
 fi
 
-# Add workspace folder cd alias
+####################################
+### Additional container settings ##
+####################################
+
+## Display pandasim welcome message ##
+# echo "Pandasim singularity contrainer opened."
+
+## Source ros enviroment
+if [ -f "/opt/ros/kinetic/setup.bash" ]; then
+    source "/opt/ros/kinetic/setup.bash"
+fi
+
+## User defined aliases ##
+
+# Add catkin workspace folder cd alias
 if [ "$(ls -A "/home" 2> /dev/null)" == "" ]; then
    	alias pcd='cd /panda_autograsp_ws/src'
 else
 	alias pcd='cd $SINGULARITY_CONTAINER/panda_autograsp_ws/src'
 fi
 
-# Add user defined aliases
+# Other aliases
 alias atf='conda activate tf-gpu'
 alias dtf='conda deactivate'
 alias python='/usr/bin/python2'
 alias rsource='. /opt/ros/kinetic/setup.bash'
 alias psource='. /panda_autograsp_ws/devel/setup.bash'
 alias pbuild='. /opt/ros/kinetic/setup.bash; catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build'
+
+## Run script input args ##
+exec "$@"
