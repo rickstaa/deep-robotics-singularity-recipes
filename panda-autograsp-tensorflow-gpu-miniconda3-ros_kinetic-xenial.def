@@ -17,7 +17,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     Version: v0.0.5
     Type: Private
 
-%enviroment
+%environment
 
     ## Set language options ##
     LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -26,7 +26,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     ROS_DISTRO=kinetic
 
     ## Set conda path ##
-    PATH /opt/conda/bin:$PATH
+    #export PATH="/opt/conda/bin:$PATH"
 
 %post
 
@@ -60,6 +60,29 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     apt clean
     rm -rf /var/lib/apt/lists/*
 
+    ## Fix system python dependencies
+    apt install -q -y\
+        build-essential \
+        python3 \
+        python-dev \
+        python3-dev \
+        python-tk \
+        python3-tk \
+        python-opengl \
+        libsm6 \
+        libxext6 \
+        libglib2.0-0 \
+        libxrender1 \
+        wget
+
+    ## Install pip (`apt-get install python-pip` causes trouble w/ networkx).
+    curl -O https://bootstrap.pypa.io/get-pip.py && \
+	    python get-pip.py && \
+        rm get-pip.py
+    curl -O https://bootstrap.pypa.io/get-pip.py && \
+	    python3 get-pip.py && \
+        rm get-pip.py
+
     ## Add a .singularity_bashrc file to the container ##
     bash -c "cd / \
         && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
@@ -78,6 +101,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     echo "" >> /.singularity_bashrc
     echo "# >>> conda initialize >>>" >> /.singularity_bashrc
     echo ". /opt/conda/etc/profile.d/conda.sh" >> /.singularity_bashrc
+    echo "conda deactivate" >> /.singularity_bashrc
     echo "conda activate tf-gpu" >> /.singularity_bashrc
     echo "# <<< conda initialize <<<" >> /.singularity_bashrc
 
