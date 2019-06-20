@@ -126,14 +126,7 @@ alias dtf='conda deactivate'
 alias rsource='. /opt/ros/kinetic/setup.bash'
 alias psource='. /panda_autograsp_ws/devel/setup.bash'
 alias pbuild='. /opt/ros/kinetic/setup.bash; catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build'
+alias sudo=''
 
 ## Run script input args ##
 exec "$@"
-## Source conda initialization script ##
-. /.conda_init
-
-## Source conda wrapper script ##
-. /.conda_wrapper
-
-## Activate tf-gpu enviroment
-#conda activate tf-gpu

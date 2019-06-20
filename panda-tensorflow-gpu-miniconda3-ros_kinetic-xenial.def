@@ -56,11 +56,13 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         figlet \
         dirmngr \
         gnupg2 \
-        lsb-release
+        lsb-release \
+        unzip
     apt clean
     rm -rf /var/lib/apt/lists/*
 
     ## Fix system python dependencies
+    apt update --fix-missing
     apt install -q -y\
         build-essential \
         python3 \

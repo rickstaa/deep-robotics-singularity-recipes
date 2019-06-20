@@ -56,11 +56,13 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         figlet \
         dirmngr \
         gnupg2 \
-        lsb-release
+        lsb-release \
+        unzip
     apt clean
     rm -rf /var/lib/apt/lists/*
 
     ## Fix system python dependencies
+    apt update --fix-missing
     apt install -q -y\
         build-essential \
         python3 \
@@ -186,18 +188,10 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         && catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build"
 
     ## Download cuda10.0 samples and set cmake variables
-    bash -c "wget https://github.com/NVIDIA/cuda-samples/archive/v10.0.tar.gz \
-        && tar -xvzf v10.0.tar.gz -C /opt \
-        && rm v10.0.tar.gz \
-        && mv /opt/cuda-samples-10.0/Common /opt/cuda-samples-10.0/common \
-        && mv /opt/cuda-samples-10.0/Samples /opt/cuda-samples-10.0/samples"
-    shopt -s extglob
-    cd /opt/cuda-samples-10.0/common
-    mkdir -p inc
-    mv !(inc) inc
-    shopt -u extglob
-    cd /opt
-    export NVCUDASAMPLES_ROOT=/opt/cuda-samples-10.0
+    bash -c "cd /opt \
+        && git clone https://github.com/zchee/cuda-sample.git \
+        && mv cuda-sample NVIDIA_CUDA-10.0_Samples"
+    export NVCUDASAMPLES_ROOT=/opt/NVIDIA_CUDA-10.0_Samples
 
     ## Install kinect2.0 Library ##
     apt update
@@ -211,17 +205,19 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         libglfw3-dev \
         libva-dev \
         libjpeg-dev \
-        libopenni2-dev
+        libopenni2-dev \
+        openni2-utils
     bash -c "cd /opt \
         && git clone https://github.com/OpenKinect/libfreenect2.git \
         && cd libfreenect2 \
-        && mkdir build \
+        && mkdir -p build \
         && cd build \
         && cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/freenect2 \
         && make \
         && make install \
         && mkdir -p /etc/udev/rules.d/ \
-        && cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/"
+        && cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/\
+        && make install-openni2"
 
     ## Upgrade packages and remove unused packages ##
     apt -q -y upgrade
