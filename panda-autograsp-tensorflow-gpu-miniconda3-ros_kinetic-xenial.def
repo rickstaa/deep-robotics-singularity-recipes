@@ -181,13 +181,16 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         && cd /panda_autograsp_ws \
         && git clone https://github.com/rickstaa/panda_autograsp_ws.git src"
 
-    ### Build panda_simulation project package
+    ### Build panda_simulation project package ##
     bash -c "cd /panda_autograsp_ws \
         && rosdep install --from-paths src --ignore-src --rosdistro kinetic -y --skip-keys libfranka \
         && source /opt/ros/kinetic/setup.sh \
         && catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build"
 
-    ## Download cuda10.0 samples and set cmake variables
+    ## Install Java JDK ##
+    apt-get install -q -y default-jdk
+
+    ## Download cuda10.0 samples and set cmake variables ##
     bash -c "cd /opt \
         && git clone https://github.com/zchee/cuda-sample.git \
         && mv cuda-sample NVIDIA_CUDA-10.0_Samples"
@@ -206,7 +209,10 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         libva-dev \
         libjpeg-dev \
         libopenni2-dev \
-        openni2-utils
+        openni2-utils \
+        freeglut3-dev \
+        doxygen \
+        graphviz
     bash -c "cd /opt \
         && git clone https://github.com/OpenKinect/libfreenect2.git \
         && cd libfreenect2 \
