@@ -129,3 +129,11 @@ alias pbuild='. /opt/ros/kinetic/setup.bash; catkin build -j4 -DCMAKE_BUILD_TYPE
 
 ## Run script input args ##
 exec "$@"
+## Source conda initialization script ##
+. /.conda_init
+
+## Source conda wrapper script ##
+. /.conda_wrapper
+
+## Activate tf-gpu enviroment
+#conda activate tf-gpu

@@ -1,13 +1,19 @@
-## <<< conda_wrapper function <<<
+
+# <<< conda_wrapper function <<<
 # This wrapper was added to solve for the conflicts caused by sourcing a ROS setup.bash file inside a
 # conda enviroment.
 
+# Get conda install pythonpath
+CONDA_PATH=$(echo $CONDA_EXE |sed -e 's/\/bin\/conda//')
+export CONDA_PATH
+
+# Initialize conda wrapper function
 function _conda_wrapper {
     if [ $1 == "activate" ] # Warp conda deactivate command
     then
 
         # Get conda site-pack folder
-        _conda_site_packages="$CONDA_PREFIX"/lib/$(python -V | sed -e 's/Python /python/' | sed 's/.\{2\}$//')/site-packages
+        _conda_site_packages=$(find "$CONDA_PATH"/envs/"$2" -iname site-packages)
 
         # Safe old conda pythonpath
         export _OLD_PYTHONPATH="$PYTHONPATH"
@@ -21,8 +27,8 @@ function _conda_wrapper {
     then
 
         # Remove conda site-packages folder from the PYTHONPATH
-        PYTHONPATH="$CONDA_PREFIX/lib/$(python -V | sed -e 's/Python /python/' | sed 's/.\{2\}$//')/site-packages:$PYTHONPATH"
-        umset _OLD_PYTHONPATH
+        PYTHONPATH=$_OLD_PYTHONPATH
+        unset _OLD_PYTHONPATH
 
         # Run conda deactivate command
         conda $@
@@ -31,5 +37,6 @@ function _conda_wrapper {
         conda $@
     fi
 }
-alias conda="_conda_wrapper $@"
+alias conda='_conda_wrapper $@'
 # <<< Conda wrapper function <<<
+

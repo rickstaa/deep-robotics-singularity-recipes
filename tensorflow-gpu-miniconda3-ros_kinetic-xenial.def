@@ -88,6 +88,8 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     bash -c "cd / \
         && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
         && cp /deep_robotics_singularity_recipes/.singularity_bashrc /.singularity_bashrc \
+        && cp /deep_robotics_singularity_recipes/.conda_init /.conda_init \
+        && cp /deep_robotics_singularity_recipes/.conda_wrapper /.conda_wrapper \
         && rm -rf /deep_robotics_singularity_recipes"
 
     ## Install miniconda3 ##
@@ -99,12 +101,17 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     conda install -q -y python=3
     conda update conda
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
-    echo "" >> /.singularity_bashrc
-    echo "# >>> conda initialize >>>" >> /.singularity_bashrc
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> /.singularity_bashrc
-    echo "conda deactivate" >> /.singularity_bashrc
-    echo "conda activate tf-gpu" >> /.singularity_bashrc
-    echo "# <<< conda initialize <<<" >> /.singularity_bashrc
+
+    ## Add conda init and conda wrapper to .singularity_bashrc ##
+    echo "" >> ./.singularity_bashrc
+    echo "## Source conda initialization script ##" >> ./.singularity_bashrc
+    echo ". /.conda_init" >> ./.singularity_bashrc
+    echo "" >> ./.singularity_bashrc
+    echo "## Source conda wrapper script ##" >> ./.singularity_bashrc
+    echo ". /.conda_wrapper" >> ./.singularity_bashrc
+    echo "" >> ./.singularity_bashrc
+    echo "## Activate tf-gpu enviroment" >> ./.singularity_bashrc
+    echo "conda activate tf-gpu" >> ./.singularity_bashrc
 
     ## Create tf-gpu enviroment ##
     conda create -q -y --name tf-gpu

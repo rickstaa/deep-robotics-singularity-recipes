@@ -98,12 +98,14 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     conda install -q -y python=3
     conda update conda
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+
+    ## Add conda init and conda wrapper to .singularity_bashrc ##
     echo "" >> /.singularity_bashrc
-    echo "# >>> conda initialize >>>" >> /.singularity_bashrc
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> /.singularity_bashrc
-    echo "conda deactivate" >> /.singularity_bashrc
-    echo "conda activate tf-gpu" >> /.singularity_bashrc
-    echo "# <<< conda initialize <<<" >> /.singularity_bashrc
+    echo "## Source conda initialization script ##" >> /.singularity_bashrc
+    echo ". /.conda_init" >> /.singularity_bashrc
+    echo "" >> /.singularity_bashrc
+    echo "## Source conda wrapper script ##" >> /.singularity_bashrc
+    echo ". /.conda_wrapper" >> /.singularity_bashrc
 
     ## Create tf-gpu enviroment ##
     conda create -q -y --name tf-gpu
@@ -183,6 +185,20 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         && source /opt/ros/kinetic/setup.sh \
         && catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build"
 
+    ## Download cuda10.0 samples and set cmake variables
+    bash -c "wget https://github.com/NVIDIA/cuda-samples/archive/v10.0.tar.gz \
+        && tar -xvzf v10.0.tar.gz -C /opt \
+        && rm v10.0.tar.gz \
+        && mv /opt/cuda-samples-10.0/Common /opt/cuda-samples-10.0/common \
+        && mv /opt/cuda-samples-10.0/Samples /opt/cuda-samples-10.0/samples"
+    shopt -s extglob
+    cd /opt/cuda-samples-10.0/common
+    mkdir -p inc
+    mv !(inc) inc
+    shopt -u extglob
+    cd /opt
+    export NVCUDASAMPLES_ROOT=/opt/cuda-samples-10.0
+
     ## Install kinect2.0 Library ##
     apt update
     apt install -q -y \
@@ -196,12 +212,12 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         libva-dev \
         libjpeg-dev \
         libopenni2-dev
-    bash -c "cd / \
+    bash -c "cd /opt \
         && git clone https://github.com/OpenKinect/libfreenect2.git \
         && cd libfreenect2 \
         && mkdir build \
         && cd build \
-        && cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/freenect2 \
+        && cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/freenect2 \
         && make \
         && make install \
         && mkdir -p /etc/udev/rules.d/ \
