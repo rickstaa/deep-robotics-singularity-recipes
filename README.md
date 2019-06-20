@@ -103,7 +103,7 @@ rm vscode-indisders.tar.gz
 mkdir data
 ```
 
-5. Now exit the shell and change the container permissions as described below. When the right permissions are set you can run the program using the `/VSCode-Linux-x64/bin/code-insiders` command. This command can also be added as an alias to the `.singularity_bashrc` file which is sourced while loading the container.
+5. Now exit the shell and change the container permissions as described below. When the right permissions are set you can run the program using the `/VSCode-linux-x64/bin/code-insiders` command. This command can also be added as an alias to the `.singularity_bashrc` file which is sourced while loading the container.
 
 ### Add the right permissions
 If you also want to access the files in the container folder without having to use the root user you can change the `<YOUR_IMAGE_NAME>` folder permissions as follows:
