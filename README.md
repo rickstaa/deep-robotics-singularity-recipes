@@ -63,8 +63,8 @@ sudo singularity build <CONTAINER_NAME>.simg shub://rickstaa/deep-robotics-singu
 
 After the container is built you can use the singularity `shell`, `start` and `run` commands to interact with the container. You are advised to use the `run` command since this also sources a `.singularity_bashrc` file that is present in each of the containers. This file can be used as a `.bashrc` file. You can run the singularity container using one of the following `run` commands:
 
-- **With Nvidia GPU:** `$ singularity run --nv <YOUR_IMAGE_NAME>`
-- **Without Nvidia GPU:** `$ singularity run <YOUR_IMAGE_NAME>`
+- **With Nvidia GPU:** `$ singularity run --nv <YOUR_CONTAINER_NAME>`
+- **Without Nvidia GPU:** `$ singularity run <YOUR_CONTAINER_NAME>`
 
 Additionally, you can also add the `--writable` parameter to the `run command` to receive write permissions.
 
@@ -73,50 +73,37 @@ The tensorflow-gpu package is present in the `tf-gpu` conda enviroment. This env
 
 ## Additional documentation
 
-### Add a visual code IDE to the singularity image
+### Add a visual code IDE to the singularity container
 
 Visual studio code can be added to the singularity container in order to enable easy code debugging. This is done as follows:
 
-1. Run the container as a sudo user using the `--writable` tag
+1. Run your container using the `sudo singularity run --writable <YOUR_CONTAINER_NAME>`
+2. Install visual code or visual code-insiders using the following bash commands:
 
 ```
-sudo singularity run --nv --writable <SINGULARITY_CONTAINER>
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install code # or code-insiders
 ```
 
-2. Cd to the root folder.
-
-```
-cd /
-```
-
-3. Download the visual studio code tar.gz
-
-```
-curl -L "https://go.microsoft.com/fwlink/?LinkId=723968" > vscode-insiders.tar.gz
-tar xzf vscode-stable.tar.gz
-```
-
-4. Go into the newly created VSCode-Linux-x64 folder and create a `data` folder.
-
-```
-mkdir data
-```
-
-5. Now exit the shell and change the container permissions as described below. When the right permissions are set you can run the program using the `/VSCode-Linux-x64/bin/code-insiders` command. This command can also be added as an alias to the `.singularity_bashrc` file which is sourced while loading the container.
+3. Bind the /run directory to use visual code from within the container this can be done by running the singularity containg with the `sudo singularity run -B /run --writable <YOUR_CONTAINER_NAME>` command.
 
 ### Add the right permissions
-If you also want to access the files in the container folder without having to use the root user you can change the `<YOUR_IMAGE_NAME>` folder permissions as follows:
+If you also want to access the files in the container folder without having to use the root user you can change the `<YOUR_CONTAINER_NAME>` folder permissions as follows:
 
 1. Change the group owner to your user group
 
  ```
- sudo chgrp -R <YOUR_USER_NAME> ./<YOUR_IMAGE_NAME>
+ sudo chgrp -R <YOUR_USER_NAME> ./<YOUR_CONTAINER_NAME>
  ```
 
-2. Give your user group *read and write* access to the <YOUR_IMAGE_NAME> folder.
+2. Give your user group *read and write* access to the <YOUR_CONTAINER_NAME> folder.
 
 ```
-sudo chmod -R g+rwx  ./<YOUR_IMAGE_NAME>
+sudo chmod -R g+rwx  ./<YOUR_CONTAINER_NAME>
 ```
 
 5. If successful the lock above the folder now disappeared.
