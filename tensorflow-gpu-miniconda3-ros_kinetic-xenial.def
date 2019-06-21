@@ -25,9 +25,6 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     ## Set ROS distro variable ##
     ROS_DISTRO=kinetic
 
-    ## Set conda path ##
-    #export PATH="/opt/conda/bin:$PATH"
-
 %post
 
     ## Install system package dependencies ##
@@ -57,7 +54,9 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         dirmngr \
         gnupg2 \
         lsb-release \
-        unzip
+        unzip \
+        cmake \
+        pkg-config
     apt clean
     rm -rf /var/lib/apt/lists/*
 

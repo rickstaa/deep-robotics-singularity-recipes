@@ -22,11 +22,17 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     ## Set language options ##
     LANG=C.UTF-8 LC_ALL=C.UTF-8
 
-    ## Set ROS distro variable ##
+    ## Set ROS distro var ##
     ROS_DISTRO=kinetic
 
-    ## Set conda path ##
-    #export PATH="/opt/conda/bin:$PATH"
+    ## Cuda samples env var ##
+    export NVCUDASAMPLES_ROOT=/opt/NVIDIA_CUDA-10.0_Samples
+
+    ## Libfreenect2 conf env var ##
+    export LIBFREENECT2_INSTALL_PREFIX=/opt/freenect2/
+
+    ## Freenect2 lib env var ##
+    export LD_LIBRARY_PATH=/opt/freenect2/lib
 
 %post
 
@@ -57,7 +63,9 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         dirmngr \
         gnupg2 \
         lsb-release \
-        unzip
+        unzip \
+        cmake \
+        pkg-config
     apt clean
     rm -rf /var/lib/apt/lists/*
 
@@ -167,7 +175,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     ## Install libfranca from source ##
     bash -c "cd / \
         && apt install -q -y ros-kinetic-libfranka ros-kinetic-franka-ros \
-        && apt install -q -y build-essential cmake libpoco-dev libeigen3-dev \
+        && apt install -q -y libpoco-dev libeigen3-dev \
         && apt remove -y "*libfranka*" \
         && git clone --recursive https://github.com/frankaemika/libfranka.git \
         && cd /libfranka \
@@ -199,9 +207,6 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     ## Install kinect2.0 Library ##
     apt update
     apt install -q -y \
-        build-essential \
-        cmake \
-        pkg-config \
         libusb-1.0-0-dev \
         libturbojpeg \
         libjpeg-turbo8-dev \
@@ -212,18 +217,46 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         openni2-utils \
         freeglut3-dev \
         doxygen \
-        graphviz
+        graphviz \
+        libgtk2.0-dev
     bash -c "cd /opt \
         && git clone https://github.com/OpenKinect/libfreenect2.git \
         && cd libfreenect2 \
         && mkdir -p build \
         && cd build \
-        && cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/freenect2 \
+        && cmake .. -DCMAKE_INSTALL_PREFIX=/opt/freenect2 \
         && make \
         && make install \
         && mkdir -p /etc/udev/rules.d/ \
-        && cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/\
+        && cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/ \
         && make install-openni2"
+
+    ## Install pylibfreenect2 ##
+    export LIBFREENECT2_INSTALL_PREFIX=/opt/freenect2/
+    bash -c "cd /opt \
+        && git clone https://github.com/r9y9/pylibfreenect2.git \
+        && cd pylibfreenect2 \
+        && pip install -y cyton \
+        && git checkout v0.1.2 \
+        && python setup.py install"
+
+    ## Install opencv ##
+    apt update
+    apt install -q -y \
+        libjpeg8-dev \
+        libtiff5-dev \
+        libjasper-dev \
+        libpng12-dev \
+        libavcodec-dev \
+        libavformat-dev \
+        libswscale-dev \
+        libv4l-dev \
+        libxvidcore-dev \
+        libx264-dev \
+        libgtk-3-dev \
+        libatlas-base-dev \
+        gfortran
+    pip install -y opencv-python
 
     ## Upgrade packages and remove unused packages ##
     apt -q -y upgrade

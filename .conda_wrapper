@@ -33,7 +33,6 @@ function _conda_wrapper {
         # Run conda deactivate command
         conda $@
     else # Warp other conda commands
-        echo "Other command"
         conda $@
     fi
 }
