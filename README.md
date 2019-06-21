@@ -94,7 +94,7 @@ cd /
 ```
 curl -L "https://go.microsoft.com/fwlink/?LinkId=723968" > vscode-insiders.tar.gz
 tar xzf vscode-insiders.tar.gz
-rm vscode-indisders.tar.gz
+rm vscode-insiders.tar.gz
 ```
 
 4. Go into the newly created VSCode-Linux-x64 folder and create a `data` folder.
