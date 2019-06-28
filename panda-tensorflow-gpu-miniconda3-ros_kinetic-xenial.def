@@ -84,6 +84,10 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 	    python3 get-pip.py && \
         rm get-pip.py
 
+    ## Install virtual env package ##
+    python -m pip install virtualenv
+    python2 -m pip install virtualenv
+
     ## Add a .singularity_bashrc file to the container ##
     bash -c "cd / \
         && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
@@ -109,12 +113,12 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     echo ". /.conda_wrapper" >> /.singularity_bashrc
 
     ## Create tf-gpu enviroment ##
-    conda create -q -y --name tf-gpu
+    conda create -q -y --name tf-gpu python==3.7
     conda activate tf-gpu
 
     ## Install jupyter notebooks
     conda install -y tensorflow-gpu
-    conda install -y jupyter
+    #conda install -y jupyter
     conda update --all
 
     ## Install pip (`apt-get install python-pip` causes trouble w/ networkx).
