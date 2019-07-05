@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to deep_robotics_singularity_recipes’s documentation! &mdash; deep_robotics_singularity_recipes 0.0.4 documentation</title>
+  <title>Deep Robotics singularity recipe repository &mdash; deep_robotics_singularity_recipes 0.0.4 documentation</title>
   
 
   
@@ -83,8 +83,7 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Welcome to deep_robotics_singularity_recipes’s documentation!</a></li>
-<li><a class="reference internal" href="#deep-robotics-singularity-recipe-repository">Deep Robotics singularity recipe repository</a><ul>
+<li><a class="reference internal" href="#">Deep Robotics singularity recipe repository</a><ul>
 <li><a class="reference internal" href="#recipe-overview">Recipe overview</a><ul>
 <li><a class="reference internal" href="#public-recipes">Public recipes</a><ul>
 <li><a class="reference internal" href="#tensorflow-gpu-miniconda3-ros-kinetic-xenial-def">tensorflow-gpu-miniconda3-ros_kinetic-xenial.def</a></li>
@@ -97,8 +96,22 @@
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#how-to-use">How to use</a><ul>
+<li><a class="reference internal" href="#singularity-installation">Singularity installation</a></li>
+<li><a class="reference internal" href="#container-build-instructions">Container build instructions</a></li>
+<li><a class="reference internal" href="#container-run-instructions">Container run instructions</a></li>
+<li><a class="reference internal" href="#tensorflow-gpu-use-instructions">Tensorflow-gpu use instructions</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#additional-documentation">Additional documentation</a><ul>
+<li><a class="reference internal" href="#add-a-visual-code-ide-to-the-singularity-container">Add a visual code IDE to the singularity container</a></li>
+<li><a class="reference internal" href="#add-the-right-permissions">Add the right permissions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 </div>
             
@@ -144,7 +157,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Welcome to deep_robotics_singularity_recipes’s documentation!</li>
+      <li>Deep Robotics singularity recipe repository</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,10 +176,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-deep-robotics-singularity-recipes-s-documentation">
-<h1>Welcome to deep_robotics_singularity_recipes’s documentation!<a class="headerlink" href="#welcome-to-deep-robotics-singularity-recipes-s-documentation" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="section" id="deep-robotics-singularity-recipe-repository">
+  <div class="section" id="deep-robotics-singularity-recipe-repository">
 <h1>Deep Robotics singularity recipe repository<a class="headerlink" href="#deep-robotics-singularity-recipe-repository" title="Permalink to this headline">¶</a></h1>
 <p>This repository contains the singularity recipes I use for my robotics
 projects. The recipes in this repository can also be found on
@@ -234,6 +244,116 @@ package</a></p></li>
 </div>
 </div>
 </div>
+<div class="section" id="how-to-use">
+<h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="singularity-installation">
+<h3>Singularity installation<a class="headerlink" href="#singularity-installation" title="Permalink to this headline">¶</a></h3>
+<p>Singularity is a free, cross-platform and open-source computer program
+that performs operating-system-level virtualisation also known as
+<a class="reference external" href="https://en.wikipedia.org/wiki/OS-level_virtualisation">containerization</a>
+One of the main uses of Singularity is to bring containers and
+reproducibility to scientific computing and the high-performance
+computing (HPC) world. The Singularity installation instructions can be
+found in the <a class="reference external" href="https://www.sylabs.io/docs/">the singularity
+documentation</a>.</p>
+</div>
+<div class="section" id="container-build-instructions">
+<h3>Container build instructions<a class="headerlink" href="#container-build-instructions" title="Permalink to this headline">¶</a></h3>
+<p>The containers in this repository can be pulled directly from the
+<a class="reference external" href="https://www.singularity-hub.org">singularity-hub</a>. To build the
+container you can, therefore, use the following command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">singularity</span> <span class="n">build</span> <span class="o">&lt;</span><span class="n">CONTAINER_NAME</span><span class="o">&gt;.</span><span class="n">simg</span> <span class="n">shub</span><span class="p">:</span><span class="o">//</span><span class="n">rickstaa</span><span class="o">/</span><span class="n">deep</span><span class="o">-</span><span class="n">robotics</span><span class="o">-</span><span class="n">singularity</span><span class="o">-</span><span class="n">recipes</span><span class="p">:</span><span class="o">&lt;</span><span class="n">RECIPE_NAME</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="container-run-instructions">
+<h3>Container run instructions<a class="headerlink" href="#container-run-instructions" title="Permalink to this headline">¶</a></h3>
+<p>After the container is built you can use the singularity <code class="docutils literal notranslate"><span class="pre">shell</span></code>,
+<code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">run</span></code> commands to interact with the container. You are
+advised to use the <code class="docutils literal notranslate"><span class="pre">run</span></code> command since this also sources a
+<code class="docutils literal notranslate"><span class="pre">.singularity_bashrc</span></code> file that is present in each of the containers.
+This file can be used as a <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file. You can run the singularity
+container using one of the following <code class="docutils literal notranslate"><span class="pre">run</span></code> commands:</p>
+<ul class="simple">
+<li><p><strong>With Nvidia GPU:</strong> <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">singularity</span> <span class="pre">run</span> <span class="pre">--nv</span> <span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code></p></li>
+<li><p><strong>Without Nvidia GPU:</strong> <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">singularity</span> <span class="pre">run</span> <span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code></p></li>
+</ul>
+<p>Additionally, you can also add the <code class="docutils literal notranslate"><span class="pre">--writable</span></code> parameter to the
+<code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">command</span></code> to receive write permissions.</p>
+</div>
+<div class="section" id="tensorflow-gpu-use-instructions">
+<h3>Tensorflow-gpu use instructions<a class="headerlink" href="#tensorflow-gpu-use-instructions" title="Permalink to this headline">¶</a></h3>
+<p>The tensorflow-gpu package is present in the <code class="docutils literal notranslate"><span class="pre">tf-gpu</span></code> conda
+enviroment. This enviroment can be loaded running the
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">tf-gpu</span></code> command.</p>
+</div>
+</div>
+<div class="section" id="additional-documentation">
+<h2>Additional documentation<a class="headerlink" href="#additional-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-a-visual-code-ide-to-the-singularity-container">
+<h3>Add a visual code IDE to the singularity container<a class="headerlink" href="#add-a-visual-code-ide-to-the-singularity-container" title="Permalink to this headline">¶</a></h3>
+<p>Visual studio code can be added to the singularity container in order to
+enable easy code debugging. This is done as follows:</p>
+<ol class="arabic simple">
+<li><p>Run your container using the
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">singularity</span> <span class="pre">run</span> <span class="pre">--writable</span> <span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code></p></li>
+<li><p>Install visual code or visual code-insiders using the following bash
+commands:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">packages</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">keys</span><span class="o">/</span><span class="n">microsoft</span><span class="o">.</span><span class="n">asc</span> <span class="o">|</span> <span class="n">gpg</span> <span class="o">--</span><span class="n">dearmor</span> <span class="o">&gt;</span> <span class="n">microsoft</span><span class="o">.</span><span class="n">gpg</span>
+<span class="n">sudo</span> <span class="n">install</span> <span class="o">-</span><span class="n">o</span> <span class="n">root</span> <span class="o">-</span><span class="n">g</span> <span class="n">root</span> <span class="o">-</span><span class="n">m</span> <span class="mi">644</span> <span class="n">microsoft</span><span class="o">.</span><span class="n">gpg</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">trusted</span><span class="o">.</span><span class="n">gpg</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;echo &quot;deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main&quot; &gt; /etc/apt/sources.list.d/vscode.list&#39;</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">apt</span><span class="o">-</span><span class="n">transport</span><span class="o">-</span><span class="n">https</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">code</span> <span class="c1"># or code-insiders</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Bind the /run directory to use visual code from within the container
+this can be done by running the singularity containg with the
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">singularity</span> <span class="pre">run</span> <span class="pre">-B</span> <span class="pre">/run</span> <span class="pre">--writable</span> <span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code>
+command.</p></li>
+</ol>
+</div>
+<div class="section" id="add-the-right-permissions">
+<h3>Add the right permissions<a class="headerlink" href="#add-the-right-permissions" title="Permalink to this headline">¶</a></h3>
+<p>If you also want to access the files in the container folder without
+having to use the root user you can change the <code class="docutils literal notranslate"><span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code>
+folder permissions as follows:</p>
+<ol class="arabic simple">
+<li><p>Change the group owner to your user group</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chgrp</span> <span class="pre">-R</span> <span class="pre">&lt;YOUR_USER_NAME&gt;</span> <span class="pre">./&lt;YOUR_CONTAINER_NAME&gt;</span></code></p>
+<ol class="arabic simple" start="2">
+<li><p>Give your user group <em>read and write</em> access to the folder.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chmod</span> <span class="o">-</span><span class="n">R</span> <span class="n">g</span><span class="o">+</span><span class="n">rwx</span>  <span class="o">./&lt;</span><span class="n">YOUR_CONTAINER_NAME</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>If successful the lock above the folder now disappeared.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Icon created with svg made by
+[&#64;Eucalyp](<a class="reference external" href="https://www.flaticon.com/authors/eucalyp">https://www.flaticon.com/authors/eucalyp</a>) from
+<a class="reference external" href="https://www.flaticon.com/authors/eucalyp">www.flaticon.com</a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><span class="xref std std-ref">api</span></p></li>
+</ul>
 </div>
 
 

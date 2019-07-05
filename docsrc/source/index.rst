@@ -3,9 +3,6 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to deep_robotics_singularity_recipes's documentation!
-=============================================================
-
 Deep Robotics singularity recipe repository
 ===========================================
 
@@ -181,3 +178,15 @@ References
 
 .. |https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg| image:: https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg
    :target: https://singularity-hub.org/collections/3134
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+* :ref:`api`
