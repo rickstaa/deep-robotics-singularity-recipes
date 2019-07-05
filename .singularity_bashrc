@@ -104,10 +104,6 @@ echo "Welcome to the deep_robotics/ros_kinetic-tf-gpu HPC singularity container.
 echo "For more information about this container see ($CONT_SITE)."
 echo -e "\e[m"
 
-## Add user account to xhost control list ##
-# Solves libfreenect2 and pylibfreenect2 not working on root problem
-xhost local:root > /dev/null
-
 ## Source ros enviroment ##
 if [ -f "/opt/ros/kinetic/setup.bash" ]; then
     source "/opt/ros/kinetic/setup.bash"
