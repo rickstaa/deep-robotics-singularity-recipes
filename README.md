@@ -107,3 +107,6 @@ sudo chmod -R g+rwx  ./<YOUR_CONTAINER_NAME>
 ```
 
 5. If successful the lock above the folder now disappeared.
+
+# References
+- Icon created with svg made by (@Eucalyp)[https://www.flaticon.com/authors/eucalyp] from [www.flaticon.com](https://www.flaticon.com/authors/eucalyp)
