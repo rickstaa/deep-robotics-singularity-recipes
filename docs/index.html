@@ -84,7 +84,21 @@
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">Welcome to deep_robotics_singularity_recipes’s documentation!</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#deep-robotics-singularity-recipe-repository">Deep Robotics singularity recipe repository</a><ul>
+<li><a class="reference internal" href="#recipe-overview">Recipe overview</a><ul>
+<li><a class="reference internal" href="#public-recipes">Public recipes</a><ul>
+<li><a class="reference internal" href="#tensorflow-gpu-miniconda3-ros-kinetic-xenial-def">tensorflow-gpu-miniconda3-ros_kinetic-xenial.def</a></li>
+<li><a class="reference internal" href="#panda-tensorflow-gpu-miniconda3-ros-kinetic-xenial-def">panda-tensorflow-gpu-miniconda3-ros_kinetic-xenial.def</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#private-recipes">Private recipes</a><ul>
+<li><a class="reference internal" href="#panda-autograsp-tensorflow-gpu-miniconda3-ros-kinetic-xenial">panda-autograsp-tensorflow-gpu-miniconda3-ros_kinetic-xenial</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
             
@@ -151,16 +165,75 @@
             
   <div class="section" id="welcome-to-deep-robotics-singularity-recipes-s-documentation">
 <h1>Welcome to deep_robotics_singularity_recipes’s documentation!<a class="headerlink" href="#welcome-to-deep-robotics-singularity-recipes-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="deep-robotics-singularity-recipe-repository">
+<h1>Deep Robotics singularity recipe repository<a class="headerlink" href="#deep-robotics-singularity-recipe-repository" title="Permalink to this headline">¶</a></h1>
+<p>This repository contains the singularity recipes I use for my robotics
+projects. The recipes in this repository can also be found on
+<a class="reference external" href="https://www.singularity-hub.org">www.singularity-hub.org</a></p>
+<div class="section" id="recipe-overview">
+<h2>Recipe overview<a class="headerlink" href="#recipe-overview" title="Permalink to this headline">¶</a></h2>
+<p>This repository contains both public and private recipe files. The
+private recipe files can only be built with the right permissions. To
+obtain the right permissions to a private recipe contact me at
+<a class="reference external" href="https://www.github.com/rickstaa">github.com/rickstaa</a>.</p>
+<div class="section" id="public-recipes">
+<h3>Public recipes<a class="headerlink" href="#public-recipes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><strong>tensorflow-gpu-miniconda3-ros_kinetic-xenial.def</strong></p></li>
+<li><p><strong>panda-tensorflow-gpu-miniconda3-ros_kinetic-xenial.def</strong></p></li>
 </ul>
+<div class="section" id="tensorflow-gpu-miniconda3-ros-kinetic-xenial-def">
+<h4>tensorflow-gpu-miniconda3-ros_kinetic-xenial.def<a class="headerlink" href="#tensorflow-gpu-miniconda3-ros-kinetic-xenial-def" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.tensorflow.org">Latest stable tensorflow release</a></p></li>
+<li><p><a class="reference external" href="https://jupyter.org/">Jupyter notebook</a></p></li>
+<li><p><a class="reference external" href="https://wiki.ros.org/kinetic">ROS kinetic</a></p></li>
+<li><p><a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda3</a></p></li>
+<li><p><a class="reference external" href="https://anaconda.org/anaconda/tensorflow-gpu">conda
+tensorflow-gpu</a></p></li>
+</ul>
+</div>
+<div class="section" id="panda-tensorflow-gpu-miniconda3-ros-kinetic-xenial-def">
+<h4>panda-tensorflow-gpu-miniconda3-ros_kinetic-xenial.def<a class="headerlink" href="#panda-tensorflow-gpu-miniconda3-ros-kinetic-xenial-def" title="Permalink to this headline">¶</a></h4>
+<p>This recipe sets up a <a class="reference external" href="https://wiki.ubuntu.com/XenialXerus">UBUNTU 16.04
+(xenial)</a> container with the
+following packages installed in it:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.tensorflow.org">Latest stable tensorflow release</a></p></li>
+<li><p><a class="reference external" href="https://jupyter.org/">Jupyter notebook</a></p></li>
+<li><p><a class="reference external" href="https://wiki.ros.org/kinetic">ROS kinetic</a></p></li>
+<li><p><a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda3</a></p></li>
+<li><p><a class="reference external" href="https://anaconda.org/anaconda/tensorflow-gpu">conda
+tensorflow-gpu</a></p></li>
+<li><p><a class="reference external" href="https://github.com/frankaemika/libfranka">libfranka</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rickstaa/panda_simulation">panda_simulation
+package</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="private-recipes">
+<h3>Private recipes<a class="headerlink" href="#private-recipes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="panda-autograsp-tensorflow-gpu-miniconda3-ros-kinetic-xenial">
+<h4>panda-autograsp-tensorflow-gpu-miniconda3-ros_kinetic-xenial<a class="headerlink" href="#panda-autograsp-tensorflow-gpu-miniconda3-ros-kinetic-xenial" title="Permalink to this headline">¶</a></h4>
+<p>This recipe sets up a <a class="reference external" href="https://wiki.ubuntu.com/XenialXerus">UBUNTU 16.04
+(xenial)</a> container with the
+following packages installed in it:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.tensorflow.org">Latest stable tensorflow release</a></p></li>
+<li><p><a class="reference external" href="https://jupyter.org/">Jupyter notebook</a></p></li>
+<li><p><a class="reference external" href="https://wiki.ros.org/kinetic">ROS kinetic</a></p></li>
+<li><p><a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda3</a></p></li>
+<li><p><a class="reference external" href="https://anaconda.org/anaconda/tensorflow-gpu">conda
+tensorflow-gpu</a></p></li>
+<li><p><a class="reference external" href="https://github.com/frankaemika/libfranka">libfranka</a></p></li>
+<li><p><a class="reference external" href="https://github.com/rickstaa/panda_autograsp_ws">panda_autograsp
+package</a></p></li>
+<li><p><a class="reference external" href="https://github.com/OpenKinect/libfreenect2">libfreenect2</a></p></li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 
 
