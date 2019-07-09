@@ -12,7 +12,7 @@
 ####################################
 ### bashrc parameters ##############
 ####################################
-CONT_SITE='https://deep-robotics.dev/'
+CONT_SITE='https://deep-robotics.dev'
 
 ####################################
 ### Main bashrc settings ###########
