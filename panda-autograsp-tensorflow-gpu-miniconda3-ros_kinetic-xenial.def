@@ -32,7 +32,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     export LIBFREENECT2_INSTALL_PREFIX=/opt/freenect2/
 
     ## Freenect2 lib env var ##
-    export LD_LIBRARY_PATH=/opt/freenect2/lib
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/freenect2/lib
 
 %post
 
@@ -125,8 +125,9 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     ## Create tf-gpu enviroment ##
     conda create -q -y --name tf-gpu python==3.7
     conda activate tf-gpu
+    pip install rospkg
 
-    ## Install jupyter notebooks
+    ## Install python packages ##
     conda install -y tensorflow-gpu
     #conda install -y jupyter
     conda update --all
@@ -234,6 +235,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
     ## Install pylibfreenect2 ##
     export LIBFREENECT2_INSTALL_PREFIX=/opt/freenect2/
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/freenect2/lib
     bash -c "cd /opt \
         && git clone https://github.com/r9y9/pylibfreenect2.git \
         && cd pylibfreenect2 \
