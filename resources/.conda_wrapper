@@ -38,4 +38,3 @@ function _conda_wrapper {
 }
 alias conda='_conda_wrapper $@'
 # <<< Conda wrapper function <<<
-

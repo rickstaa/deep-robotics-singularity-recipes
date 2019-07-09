@@ -108,19 +108,18 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     conda update conda
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 
-
     ## Add conda init and conda wrapper to .singularity_bashrc ##
-    echo "" >> ./.singularity_bashrc
-    echo ". /.welcome" >> ./.singularity_bashrc
-    echo "" >> ./.singularity_bashrc
-    echo "## Source conda initialization script ##" >> ./.singularity_bashrc
-    echo ". /.conda_init" >> ./.singularity_bashrc
-    echo "" >> ./.singularity_bashrc
-    echo "## Source conda wrapper script ##" >> ./.singularity_bashrc
-    echo ". /.conda_wrapper" >> ./.singularity_bashrc
-    echo "" >> ./.singularity_bashrc
-    echo "## Activate tf-gpu enviroment" >> ./.singularity_bashrc
-    echo "conda activate tf-gpu" >> ./.singularity_bashrc
+    cat ./.welcome_msg >> ./.singularity_bashrc
+    echo "" >> /.singularity_bashrc
+    echo "## Source conda initialization script ##" >> /.singularity_bashrc
+    echo ". /.conda_init" >> /.singularity_bashrc
+    echo "" >> /.singularity_bashrc
+    echo "## Source conda wrapper script ##" >> /.singularity_bashrc
+    echo ". /.conda_wrapper" >> /.singularity_bashrc
+    echo "" >> /.singularity_bashrc
+    echo "## Activate tf-gpu enviroment" >> /.singularity_bashrc
+    echo "conda activate tf-gpu" >> /.singularity_bashrc
+    rm /.welcome_msg # Remove welcome message file
 
     ## Create tf-gpu enviroment ##
     conda create -q -y --name tf-gpu python==3.7
