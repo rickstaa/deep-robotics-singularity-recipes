@@ -1,6 +1,5 @@
 ## Welcome message ##
 export TERM=xterm-256color
-CONT_SITE='https://github.com/rickstaa/deep_robotics_singularity_recipes'
 echo -e "\e[1;31m"
 cat<<TF
 ________                               _______________                
