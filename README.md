@@ -84,12 +84,12 @@ Visual studio code can be added to the singularity container in order to enable 
 2.  Install visual code or visual code-insiders using the following bash commands:
 
 ```
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-    sudo apt-get install apt-transport-https
-    sudo apt-get update
-    sudo apt-get install code # or code-insiders
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install code # or code-insiders
 ```
 
 3.  Bind the /run directory to use visual code from within the container this can be done by running the singularity containg with the `sudo singularity run -B /run --writable <YOUR_CONTAINER_NAME>` command.
