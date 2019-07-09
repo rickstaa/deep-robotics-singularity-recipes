@@ -22,6 +22,6 @@ cat<<TF
 |                            _|       |  
 TF
 echo -e "\e[0;33m"
-echo "Welcome to the deep_robotics/ros_kinetic-tf-gpu HPC singularity container."
+echo "Welcome to the deep_robotics/panda-autograsp-tensorflow-gpu-miniconda3-ros_kinetic-xenial HPC singularity container."
 echo "For more information about this container see ($CONT_SITE)."
 echo -e "\e[m"
