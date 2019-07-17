@@ -95,7 +95,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         && cp /deep_robotics_singularity_recipes/resources/.singularity_bashrc /.singularity_bashrc \
         && cp /deep_robotics_singularity_recipes/resources/.conda_init /.conda_init \
         && cp /deep_robotics_singularity_recipes/resources/.conda_wrapper /.conda_wrapper \
-        && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/panda-tensorflow-gpu-miniconda3-ros_kinetic-xenial.txt /.welcome \
+        && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/panda-tensorflow-gpu-miniconda3-ros_kinetic-xenial.txt /.welcome_msg \
         && rm -rf /deep_robotics_singularity_recipes"
 
     ## Install miniconda3 ##
