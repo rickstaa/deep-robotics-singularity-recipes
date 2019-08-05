@@ -1,7 +1,6 @@
 # Deep Robotics singularity recipe repository
 
 [![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/3134)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3b8fa8e9752b453ab436b0d8cbf7ceff)](https://www.codacy.com/app/rickstaa/deep_robotics_singularity_recipes?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rickstaa/deep_robotics_singularity_recipes&amp;utm_campaign=Badge_Grade)
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green)](https://github.com/rickstaa/Todoist_Global_Shortcuts_WIN10/pulse)
 [![Contributions](https://img.shields.io/badge/contributions-welcome-orange.svg)](https://github.com/rickstaa/Todoist_Global_Shortcuts_WIN10/blob/master/contributing.md)
 
