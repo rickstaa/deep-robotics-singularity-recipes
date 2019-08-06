@@ -41,7 +41,7 @@ following commands:
 
 .. code-block:: bash
 
-    bumpversion patch
-    auto-changelog
+    $ bumpversion patch
+    $ auto-changelog
 
 .. note:: To be able to run these command you first have to commit all your changes.
