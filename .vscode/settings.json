@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/home/ricks/miniconda3/envs/main/bin/python",
+    "workbench.colorTheme": "Red",
+    "restructuredtext.confPath": "${workspaceFolder}/docsrc/source"
+}
