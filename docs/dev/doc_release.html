@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Singularity installation guide &mdash; deep_robotics_singularity_recipes 0.0.8 documentation</title>
+  <title>Release documentation &mdash; deep_robotics_singularity_recipes 0.0.8 documentation</title>
   
 
   
@@ -36,8 +36,7 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Container build instructions" href="../usage/usage.html" />
-    <link rel="prev" title="Recipes" href="../info/recipes.html" /> 
+    <link rel="prev" title="Release package" href="pack_release.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,8 +92,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../info/recipes.html">Recipes</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Installation Guide</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Singularity installation guide</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/singularity.html">Singularity installation guide</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
@@ -107,10 +106,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Zone</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../dev/contributing.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev/pack_release.html">Release package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev/doc_release.html">Release documentation</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pack_release.html">Release package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#building">Building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploying">Deploying</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -156,13 +159,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Singularity installation guide</li>
+      <li>Release documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/install/singularity.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/dev/doc_release.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,15 +178,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="singularity-installation-guide">
-<h1>Singularity installation guide<a class="headerlink" href="#singularity-installation-guide" title="Permalink to this headline">¶</a></h1>
-<p>Singularity is a free, cross-platform and open-source computer program that
-performs operating-system-level virtualization also known as
-<a class="reference external" href="https://en.wikipedia.org/wiki/OS-level_virtualisation">containerization</a>.
-One of the main uses of Singularity is to bring containers and reproducibility
-to scientific computing and the high-performance computing (HPC) world.
-The Singularity installation instructions can be found in the
-<a class="reference external" href="https://www.sylabs.io/docs/">the singularity documentation</a>.</p>
+  <div class="section" id="release-documentation">
+<h1>Release documentation<a class="headerlink" href="#release-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
+<p>Building <a class="reference external" href="https://github.com/rickstaa/deep_robotics_singularity_recipes/">deep_robotics</a> ‘s documentation requires <a class="reference external" href="http://www.sphinx-doc.org/en/master">sphinx</a>
+and a few plugins.</p>
+<p>To install the required dependencies, go to the <code class="docutils literal notranslate"><span class="pre">panda_autograsp</span></code>
+directory and run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install .[docs]
+</pre></div>
+</div>
+<p>Then, go to the <code class="docutils literal notranslate"><span class="pre">docsrc</span></code> directory and run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code>
+to build the documentation. This command will generate
+a set of web pages inside the <code class="docutils literal notranslate"><span class="pre">docsrc/_build</span></code> directory.</p>
+</div>
+<div class="section" id="deploying">
+<h2>Deploying<a class="headerlink" href="#deploying" title="Permalink to this headline">¶</a></h2>
+<p>To deploy documentation to the Github Pages site for the repository,
+simply run the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">gh-pages</span></code> command inside the <code class="docutils literal notranslate"><span class="pre">panda_autograsp/docsrc</span></code>
+directory.</p>
+</div>
 </div>
 
 
@@ -194,10 +209,8 @@ The Singularity installation instructions can be found in the
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../usage/usage.html" class="btn btn-neutral float-right" title="Container build instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="../info/recipes.html" class="btn btn-neutral float-left" title="Recipes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pack_release.html" class="btn btn-neutral float-left" title="Release package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

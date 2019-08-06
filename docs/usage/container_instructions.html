@@ -35,9 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="License" href="../license/license.html" />
-    <link rel="prev" title="Singularity installation guide" href="../install/singularity.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,17 +95,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../install/singularity.html">Singularity installation guide</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Container build instructions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#container-use-instructions">Container use instructions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#run-instructions">Run instructions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#additional-instructions">Additional instructions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#add-additional-permissions">Add additional permissions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#add-a-visual-code-ide-to-the-singularity-container">Add a visual code IDE to the singularity container</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Container build instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html#container-use-instructions">Container use instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html#additional-instructions">Additional instructions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">License</span></p>
 <ul>
@@ -169,7 +160,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/usage/usage.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/usage/container_instructions.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -183,7 +174,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="container-build-instructions">
-<span id="container-intructions"></span><span id="usage"></span><h1>Container build instructions<a class="headerlink" href="#container-build-instructions" title="Permalink to this headline">¶</a></h1>
+<h1>Container build instructions<a class="headerlink" href="#container-build-instructions" title="Permalink to this headline">¶</a></h1>
 <p>The containers in this repository can be pulled directly from
 the <a class="reference external" href="https://www.singularity-hub.org">singularity-hub</a> container
 registry as follows:</p>
@@ -221,59 +212,12 @@ container using one of the following <code class="docutils literal notranslate">
 </div>
 </div>
 </div>
-<div class="section" id="additional-instructions">
-<span id="id1"></span><h1>Additional instructions<a class="headerlink" href="#additional-instructions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="add-additional-permissions">
-<h2>Add additional permissions<a class="headerlink" href="#add-additional-permissions" title="Permalink to this headline">¶</a></h2>
-<p>If you did build the singularity container as a writable folder
-you can give your user write and read access from outside the singularity
-container by:</p>
-<ol class="arabic simple">
-<li><p>Changing the group owner to your user group.</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo chgrp -R &lt;YOUR_USER_NAME&gt; ./&lt;YOUR_CONTAINER_NAME&gt;
-</pre></div>
-</div>
-<ol class="arabic simple">
-<li><p>Giving your user group _read and write_ access to the <code class="docutils literal notranslate"><span class="pre">&lt;YOUR_CONTAINER_NAME</span></code> folder.</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo chmod -R g+rwx ./&lt;YOUR_CONTAINER_NAME&gt;
-</pre></div>
-</div>
-</div>
-<div class="section" id="add-a-visual-code-ide-to-the-singularity-container">
-<h2>Add a visual code IDE to the singularity container<a class="headerlink" href="#add-a-visual-code-ide-to-the-singularity-container" title="Permalink to this headline">¶</a></h2>
-<p>Visual studio code can be added to the singularity container in order to enable
-easy code debugging. This is done as follows:</p>
-<ol class="arabic simple">
-<li><p>Run your container using the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">singularity</span> <span class="pre">run</span> <span class="pre">--writable</span> <span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code></p></li>
-<li><p>Install visual code or visual code-insiders using the following bash commands:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl https://packages.microsoft.com/keys/microsoft.asc <span class="p">|</span> gpg --dearmor &gt; microsoft.gpg
-sudo install -o root -g root -m <span class="m">644</span> microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c <span class="s1">&#39;echo &quot;deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main&quot; &gt; /etc/apt/sources.list.d/vscode.list&#39;</span>
-sudo apt-get install apt-transport-https
-sudo apt-get update
-sudo apt-get install code <span class="c1"># or code-insiders</span>
-</pre></div>
-</div>
-</div>
-</div>
 
 
            </div>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../license/license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../install/singularity.html" class="btn btn-neutral float-left" title="Singularity installation guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

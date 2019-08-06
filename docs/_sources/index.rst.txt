@@ -38,8 +38,9 @@ to this repository (see the :ref:`contributing`).
    :maxdepth: 2
    :caption: Developer Zone
 
-   dev/doc_dev.rst
    dev/contributing.rst
+   dev/pack_release.rst
+   dev/doc_release.rst
 
 Indices and tables
 ==================

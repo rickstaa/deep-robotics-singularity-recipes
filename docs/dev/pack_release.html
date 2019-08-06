@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Singularity installation guide &mdash; deep_robotics_singularity_recipes 0.0.8 documentation</title>
+  <title>Release package &mdash; deep_robotics_singularity_recipes 0.0.8 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Container build instructions" href="../usage/usage.html" />
-    <link rel="prev" title="Recipes" href="../info/recipes.html" /> 
+    <link rel="next" title="Release documentation" href="doc_release.html" />
+    <link rel="prev" title="Contributing" href="contributing.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,8 +93,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../info/recipes.html">Recipes</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Installation Guide</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Singularity installation guide</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/singularity.html">Singularity installation guide</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
@@ -107,10 +107,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../license/license.html">License</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Zone</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../dev/contributing.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev/pack_release.html">Release package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dev/doc_release.html">Release documentation</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_release.html">Release documentation</a></li>
 </ul>
 
             
@@ -156,13 +156,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Singularity installation guide</li>
+      <li>Release package</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/install/singularity.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/dev/pack_release.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,15 +175,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="singularity-installation-guide">
-<h1>Singularity installation guide<a class="headerlink" href="#singularity-installation-guide" title="Permalink to this headline">¶</a></h1>
-<p>Singularity is a free, cross-platform and open-source computer program that
-performs operating-system-level virtualization also known as
-<a class="reference external" href="https://en.wikipedia.org/wiki/OS-level_virtualisation">containerization</a>.
-One of the main uses of Singularity is to bring containers and reproducibility
-to scientific computing and the high-performance computing (HPC) world.
-The Singularity installation instructions can be found in the
-<a class="reference external" href="https://www.sylabs.io/docs/">the singularity documentation</a>.</p>
+  <div class="section" id="release-package">
+<span id="pack-release"></span><h1>Release package<a class="headerlink" href="#release-package" title="Permalink to this headline">¶</a></h1>
+<p>Before releasing a new version, you have to bump the version
+and update the changelog. This is done using the <a class="reference external" href="https://github.com/peritus/bumpversion">bumpversion</a> python
+package and the <a class="reference external" href="https://github.com/CookPete/auto-changelog">auto-changelog</a> npm package.
+The bumpversion package can be installed using the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.[dev]</span></code>
+command inside the main repository folder. The auto-changelog package
+installation instructions can be found
+<a class="reference external" href="https://github.com/CookPete/auto-changelog">here</a>.</p>
+<p>Using these packages, you can release a new version using the
+following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ bumpversion patch
+$ auto-changelog
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To be able to run these command you first have to commit all your changes.</p>
+</div>
 </div>
 
 
@@ -194,10 +204,10 @@ The Singularity installation instructions can be found in the
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../usage/usage.html" class="btn btn-neutral float-right" title="Container build instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="doc_release.html" class="btn btn-neutral float-right" title="Release documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../info/recipes.html" class="btn btn-neutral float-left" title="Recipes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="contributing.html" class="btn btn-neutral float-left" title="Contributing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
