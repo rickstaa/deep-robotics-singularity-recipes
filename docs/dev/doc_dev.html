@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Release documentation &mdash; deep_robotics_singularity_recipes 0.0.5 documentation</title>
+  <title>Release documentation &mdash; deep_robotics_singularity_recipes 0.0.6 documentation</title>
   
 
   
@@ -197,7 +197,26 @@ a set of web pages inside the <code class="docutils literal notranslate"><span c
 <h2>Deploying<a class="headerlink" href="#deploying" title="Permalink to this headline">¶</a></h2>
 <p>To deploy documentation to the Github Pages site for the repository,
 simply run the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">gh-pages</span></code> command inside the <code class="docutils literal notranslate"><span class="pre">panda_autograsp/docsrc</span></code>
-directory.</p>
+directory.
+Release a new version
+==================================</p>
+<p>Before releasing a new version, you have to bump the version
+and update the changelog. This is done using the <a class="reference external" href="https://github.com/peritus/bumpversion">bumpversion</a> python
+package and the <a class="reference external" href="https://github.com/CookPete/auto-changelog">auto-changelog</a> npm package.
+The bumpversion package can be installed using the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.[dev]</span></code>
+command inside the main repository folder. The auto-changelog package
+installation instructions can be found
+<a class="reference external" href="https://github.com/CookPete/auto-changelog">here</a>.</p>
+<p>Using these packages, you can release a new version using the
+following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bumpversion patch
+auto-changelog
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To be able to run these command you first have to commit all your changes.</p>
+</div>
 </div>
 </div>
 

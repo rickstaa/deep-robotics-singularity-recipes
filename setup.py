@@ -14,14 +14,9 @@ from __future__ import print_function
 
 ## Standard library imports ##
 import logging
-import os
 from setuptools import setup, find_packages
 from setuptools.command.develop import develop
 from setuptools.command.install import install
-import subprocess
-import sys
-import re
-import shutil
 
 ## Package requirements ##
 setup_requirements = []

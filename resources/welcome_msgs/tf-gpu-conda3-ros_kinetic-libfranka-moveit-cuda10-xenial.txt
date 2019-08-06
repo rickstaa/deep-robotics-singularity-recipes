@@ -14,6 +14,11 @@ cat<<TF
 ╠╦╝║ ║╚═╗  ├┴┐││││├┤  │ ││  
 ╩╚═╚═╝╚═╝  ┴ ┴┴┘└┘└─┘ ┴ ┴└─┘
 TF
+echo -e "\e[0;36m"
+cat<<TF
+ \/  _  ._  o  _. | 
+ /\ (/_ | | | (_| | 
+TF
 echo -e "\e[0;33m"
 echo "Welcome to the deep_robotics:tf-gpu-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial HPC singularity container."
 echo "For more information about this container see ($CONT_SITE)."

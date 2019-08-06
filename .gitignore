@@ -1,2 +1,6 @@
 # Folders to ignore
 docsrc/build
+docsrc/source/_build
+
+# Files to exclude
+microsoft.gpg

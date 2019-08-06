@@ -26,15 +26,10 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     Type: Private
 
 %environment
-
-    ## Set language options ##
-    LANG=C.UTF-8 LC_ALL=C.UTF-8
-
     ## Set ROS distro variable ##
     ROS_DISTRO=kinetic
 
 %post
-
     ## Install system package dependencies ##
     apt update --fix-missing
     apt install -q -y\
@@ -187,7 +182,6 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     rm -rf /var/lib/apt/lists/*
 
 %runscript
-
 	## Execute the .singularity_bashrc file ##
 	OCI_CMD='/bin/bash'
 	OCI_ARGS='-rcfile /.singularity_bashrc'
