@@ -207,10 +207,10 @@ as a writeable folder.</p>
 <h2>Run instructions<a class="headerlink" href="#run-instructions" title="Permalink to this headline">¶</a></h2>
 <p>After the container is built, you can use the singularity <code class="docutils literal notranslate"><span class="pre">shell</span></code>,
 <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">run</span></code> commands to interact with the container.
-You are advised to use the <cite>run</cite> command since this also sources
+You are advised to use the <code class="docutils literal notranslate"><span class="pre">run</span></code> command since this also sources
 a <code class="docutils literal notranslate"><span class="pre">.singularity_bashrc</span></code> file that is present in each of the containers.
 This file can be used as a <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file. You can run the singularity
-container using one of the following <cite>run</cite> commands:</p>
+container using one of the following <code class="docutils literal notranslate"><span class="pre">run</span></code> commands:</p>
 <ul class="simple">
 <li><p><strong>With Nvidia GPU:</strong> <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">singularity</span> <span class="pre">run</span> <span class="pre">--nv</span> <span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code></p></li>
 <li><p><strong>Without Nvidia GPU:</strong> <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">singularity</span> <span class="pre">run</span> <span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code></p></li>
@@ -246,7 +246,7 @@ container by:</p>
 <p>Visual studio code can be added to the singularity container in order to enable
 easy code debugging. This is done as follows:</p>
 <ol class="arabic simple">
-<li><p>Run your container using the <cite>sudo singularity run –writable &lt;YOUR_CONTAINER_NAME&gt;</cite></p></li>
+<li><p>Run your container using the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">singularity</span> <span class="pre">run</span> <span class="pre">--writable</span> <span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code></p></li>
 <li><p>Install visual code or visual code-insiders using the following bash commands:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl https://packages.microsoft.com/keys/microsoft.asc <span class="p">|</span> gpg --dearmor &gt; microsoft.gpg

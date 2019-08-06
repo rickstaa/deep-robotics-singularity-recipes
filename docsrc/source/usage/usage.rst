@@ -30,10 +30,10 @@ Run instructions
 
 After the container is built, you can use the singularity ``shell``,
 ``start`` and ``run`` commands to interact with the container.
-You are advised to use the `run` command since this also sources
+You are advised to use the ``run`` command since this also sources
 a ``.singularity_bashrc`` file that is present in each of the containers.
 This file can be used as a ``.bashrc`` file. You can run the singularity
-container using one of the following `run` commands:
+container using one of the following ``run`` commands:
 
 - **With Nvidia GPU:** ``$ singularity run --nv <YOUR_CONTAINER_NAME>``
 - **Without Nvidia GPU:** ``$ singularity run <YOUR_CONTAINER_NAME>``
@@ -68,7 +68,7 @@ Add a visual code IDE to the singularity container
 Visual studio code can be added to the singularity container in order to enable
 easy code debugging. This is done as follows:
 
-#. Run your container using the `sudo singularity run --writable <YOUR_CONTAINER_NAME>`
+#. Run your container using the ``sudo singularity run --writable <YOUR_CONTAINER_NAME>``
 #. Install visual code or visual code-insiders using the following bash commands:
 
 .. code-block:: bash
