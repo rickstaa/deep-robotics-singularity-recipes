@@ -78,4 +78,4 @@ easy code debugging. This is done as follows:
    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
    sudo apt-get install apt-transport-https
    sudo apt-get update
-   sudo apt-get instll code # or code-insiders
+   sudo apt-get install code # or code-insiders
