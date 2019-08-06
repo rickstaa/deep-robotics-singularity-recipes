@@ -25,4 +25,3 @@ echo -e "\e[0;33m"
 echo "Welcome to the panda_autograsp:ros_kinect-cuda10-xenial HPC singularity container."
 echo "For more information about this container see ($CONT_SITE)."
 echo -e "\e[m"
-

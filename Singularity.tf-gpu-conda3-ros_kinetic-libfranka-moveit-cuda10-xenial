@@ -122,6 +122,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 
     ## Add conda init and conda wrapper to .singularity_bashrc ##
+    echo "" >> /.singularity_bashrc
     cat ./.welcome_msg >> ./.singularity_bashrc
     echo "" >> /.singularity_bashrc
     echo "## Source conda initialization script ##" >> /.singularity_bashrc
