@@ -11,7 +11,7 @@ registry as follows:
 
 	build <CONTAINER_NAME>.simg shub://rickstaa/panda_autograsp:ros-kinetic-cuda10-xenial
 
-It can also be build from the recipe file using the following command:
+It can also be built from the recipe file using the following command:
 
 .. code-block:: bash
 
