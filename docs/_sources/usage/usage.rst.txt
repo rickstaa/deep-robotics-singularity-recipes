@@ -9,13 +9,13 @@ registry as follows:
 
 .. code-block:: bash
 
-	build <CONTAINER_NAME>.simg shub://rickstaa/panda_autograsp:ros-kinetic-cuda10-xenial
+    build <CONTAINER_NAME>.simg shub://rickstaa/panda_autograsp:ros-kinetic-cuda10-xenial
 
 It can also be built from the recipe file using the following command:
 
 .. code-block:: bash
 
-	sudo singularity <CONTAINER_NAME>.simg shub://rickstaa/panda_autograsp:ros-kinetic-cuda10-xenial
+    sudo singularity <CONTAINER_NAME>.simg shub://rickstaa/panda_autograsp:ros-kinetic-cuda10-xenial
 
 You can also add the ``--sandbox`` argument to build the container
 as a writeable folder.
@@ -54,13 +54,13 @@ container by:
 
 .. code-block:: bash
 
-	sudo chgrp -R <YOUR_USER_NAME> ./<YOUR_CONTAINER_NAME>
+   sudo chgrp -R <YOUR_USER_NAME> ./<YOUR_CONTAINER_NAME>
 
 #. Giving your user group _read and write\_ access to the ``<YOUR_CONTAINER_NAME`` folder.
 
 .. code-block:: bash
 
-	sudo chmod -R g+rwx ./<YOUR_CONTAINER_NAME>
+   sudo chmod -R g+rwx ./<YOUR_CONTAINER_NAME>
 
 Add a visual code IDE to the singularity container
 ------------------------------------------------------------
@@ -73,9 +73,10 @@ easy code debugging. This is done as follows:
 
 .. code-block:: bash
 
-	curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
- 	sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
- 	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
- 	sudo apt-get install apt-transport-https
- 	sudo apt-get update
- 	sudo apt-get install code # or code-insiders
+   <h1>code block example</h1>
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+   sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+   sudo apt-get install apt-transport-https
+   sudo apt-get update
+   sudo apt-get instll code # or code-insiders

@@ -24,6 +24,7 @@ Deploying
 To deploy documentation to the Github Pages site for the repository,
 simply run the ``make gh-pages`` command inside the ``panda_autograsp/docsrc``
 directory.
+
 Release a new version
 ==================================
 

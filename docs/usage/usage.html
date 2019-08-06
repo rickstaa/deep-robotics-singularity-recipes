@@ -116,6 +116,7 @@
 <p class="caption"><span class="caption-text">Developer Zone</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../dev/doc_dev.html">Release documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/doc_dev.html#release-a-new-version">Release a new version</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dev/contributing.html">Contributing</a></li>
 </ul>
 
@@ -248,12 +249,13 @@ easy code debugging. This is done as follows:</p>
 <li><p>Run your container using the <cite>sudo singularity run –writable &lt;YOUR_CONTAINER_NAME&gt;</cite></p></li>
 <li><p>Install visual code or visual code-insiders using the following bash commands:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl https://packages.microsoft.com/keys/microsoft.asc <span class="p">|</span> gpg --dearmor &gt; microsoft.gpg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;h1&gt;code block example&lt;/h1&gt;
+curl https://packages.microsoft.com/keys/microsoft.asc <span class="p">|</span> gpg --dearmor &gt; microsoft.gpg
 sudo install -o root -g root -m <span class="m">644</span> microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c <span class="s1">&#39;echo &quot;deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main&quot; &gt; /etc/apt/sources.list.d/vscode.list&#39;</span>
 sudo apt-get install apt-transport-https
 sudo apt-get update
-sudo apt-get install code <span class="c1"># or code-insiders</span>
+sudo apt-get instll code <span class="c1"># or code-insiders</span>
 </pre></div>
 </div>
 </div>
