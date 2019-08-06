@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Container build instructions &mdash; deep_robotics_singularity_recipes 0.0.6 documentation</title>
+  <title>Container build instructions &mdash; deep_robotics_singularity_recipes 0.0.7 documentation</title>
   
 
   
@@ -249,8 +249,7 @@ easy code debugging. This is done as follows:</p>
 <li><p>Run your container using the <cite>sudo singularity run –writable &lt;YOUR_CONTAINER_NAME&gt;</cite></p></li>
 <li><p>Install visual code or visual code-insiders using the following bash commands:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;h1&gt;code block example&lt;/h1&gt;
-curl https://packages.microsoft.com/keys/microsoft.asc <span class="p">|</span> gpg --dearmor &gt; microsoft.gpg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl https://packages.microsoft.com/keys/microsoft.asc <span class="p">|</span> gpg --dearmor &gt; microsoft.gpg
 sudo install -o root -g root -m <span class="m">644</span> microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c <span class="s1">&#39;echo &quot;deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main&quot; &gt; /etc/apt/sources.list.d/vscode.list&#39;</span>
 sudo apt-get install apt-transport-https
