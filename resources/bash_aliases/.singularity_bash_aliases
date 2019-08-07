@@ -9,6 +9,6 @@ alias rossu='. ./devel/setup.bash'
 alias sudo=''
 
 # Source user aliases #
-if [ -f "~/.singularity_bash_aliases" ]; then
-    source "~/.singularity_bash_aliases"
+if [ -f ~/.singularity_bash_aliases ]; then
+    source ~/.singularity_bash_aliases
 fi

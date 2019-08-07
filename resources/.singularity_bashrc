@@ -108,8 +108,8 @@ if [ -f "/.welcome_msg" ]; then
 fi
 
 ## Source user .singularity_bashrc ##
-if [ -f "~/.singularity_bashrc" ]; then
-    source "~/.singularity_bashrc"
+if [ -f ~/.singularity_bashrc ]; then
+    source ~/.singularity_bashrc
 fi
 
 ## Run script input args ##
