@@ -104,6 +104,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#additional-instructions">Additional instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#container-aliases">Container aliases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#add-additional-permissions">Add additional permissions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#add-a-visual-code-ide-to-the-singularity-container">Add a visual code IDE to the singularity container</a></li>
 </ul>
@@ -223,6 +224,17 @@ container using one of the following <code class="docutils literal notranslate">
 </div>
 <div class="section" id="additional-instructions">
 <span id="id1"></span><h1>Additional instructions<a class="headerlink" href="#additional-instructions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="container-aliases">
+<h2>Container aliases<a class="headerlink" href="#container-aliases" title="Permalink to this headline">¶</a></h2>
+<p>To increase convenience I added the following aliases to the containers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">atf</span></code>: activates the tf-gpu conda environment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dconda</span></code>: deactivates the conda enviroment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rsource</span></code>: sources the ROS setup.bash file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rossu</span></code>: sources the setup.bash file at <code class="docutils literal notranslate"><span class="pre">./devel/setup.bash</span></code></p></li>
+</ul>
+<p>You can change these aliases by editing the <code class="docutils literal notranslate"><span class="pre">/.bash_aliases</span></code> file.</p>
+</div>
 <div class="section" id="add-additional-permissions">
 <h2>Add additional permissions<a class="headerlink" href="#add-additional-permissions" title="Permalink to this headline">¶</a></h2>
 <p>If you did build the singularity container as a writable folder

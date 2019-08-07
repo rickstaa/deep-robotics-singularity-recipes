@@ -9,7 +9,9 @@ To increase convenience I added the following aliases to the containers:
 - ``atf``: activates the tf-gpu conda environment
 - ``dconda``: deactivates the conda enviroment
 - ``rsource``: sources the ROS setup.bash file
-- ``rossu``: sources the setup.bash file at `./devel/setup.bash`
+- ``rossu``: sources the setup.bash file at ``./devel/setup.bash``
+
+You can change these aliases by editing the ``/.bash_aliases`` file.
 
 Add additional permissions
 --------------------------------

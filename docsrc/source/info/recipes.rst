@@ -28,6 +28,7 @@ with the following packages installed in it:
 -   `Cuda 10 <https://developer.nvidia.com/cuda-downloads>`_
 -   `Cudnn 7 <https://developer.nvidia.com/cudnn>`_
 
+
 tf-gpu-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -56,6 +57,13 @@ with the following packages installed in it:
 -   `Miniconda3 <https://docs.conda.io/en/latest/miniconda.html>`_
 -   `Cuda 10 <https://developer.nvidia.com/cuda-downloads>`_
 -   `Cudnn 7 <https://developer.nvidia.com/cudnn>`_
+
+.. note::
+    All of the above NVIDIA containers further contains an additional ``tf-gpu``
+    conda environment which is automatically activated when you run the container.
+    You can disable this by removing the ``conda activate tf-gpu`` line in
+    the ``/.singularity_bashrc`` file.
+
 
 AMD container recipes
 ------------------------------

@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/ricks/miniconda3/envs/main/bin/python",
+    "python.pythonPath": "/opt/conda/envs/autograsp/bin/python",
     "workbench.colorTheme": "Red",
     "restructuredtext.confPath": "${workspaceFolder}/docsrc/source"
 }

@@ -235,6 +235,13 @@ with the following packages installed in it:</p>
 <li><p><a class="reference external" href="https://developer.nvidia.com/cuda-downloads">Cuda 10</a></p></li>
 <li><p><a class="reference external" href="https://developer.nvidia.com/cudnn">Cudnn 7</a></p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All of the above NVIDIA containers further contains an additional <code class="docutils literal notranslate"><span class="pre">tf-gpu</span></code>
+conda environment which is automatically activated when you run the container.
+You can disable this by removing the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">tf-gpu</span></code> line in
+the <code class="docutils literal notranslate"><span class="pre">/.singularity_bashrc</span></code> file.</p>
+</div>
 </div>
 </div>
 <div class="section" id="amd-container-recipes">
