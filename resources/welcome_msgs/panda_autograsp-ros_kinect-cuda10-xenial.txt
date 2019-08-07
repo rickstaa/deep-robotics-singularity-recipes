@@ -1,3 +1,6 @@
+## Container parameters ##
+CONT_SITE='https://github.com/rickstaa/panda_autograsp'
+
 ## Welcome message ##
 export TERM=xterm-256color
 echo -e "\e[1;31m"

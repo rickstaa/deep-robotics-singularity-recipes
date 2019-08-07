@@ -109,7 +109,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         && cp /deep_robotics_singularity_recipes/resources/.singularity_bashrc /.singularity_bashrc \
         && cp /deep_robotics_singularity_recipes/resources/.conda_init /.conda_init \
         && cp /deep_robotics_singularity_recipes/resources/.conda_wrapper /.conda_wrapper \
-        && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/panda_autograsp-ros_kinect-cuda10-xenial.txt /.welcome_msg.txt \
+        && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/panda_autograsp-ros_kinect-cuda10-xenial.txt /.welcome_msg \
         && cp /deep_robotics_singularity_recipes/resources/bash_aliases/.singularity_bash_aliases /.singularity_bash_aliases \
         && rm -rf /deep_robotics_singularity_recipes"
 
@@ -123,13 +123,10 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     conda update -y conda
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 
-    ## Add conda init and conda wrapper to .singularity_bashrc ##
-    echo "" >> /.singularity_bashrc
-    cat /.welcome_msg.txt >> /.singularity_bashrc
+    ## Add conda enviroment activation command to .singularity_bashrc ##
     echo "" >> /.singularity_bashrc
     echo "## Activate autograsp enviroment" >> /.singularity_bashrc
     echo "conda activate tf-gpu" >> /.singularity_bashrc
-    rm /.welcome_msg.txt # Remove welcome message file
 
     ## Create tf-gpu enviroment ##
     conda create -q -y -n tf-gpu python=3.7

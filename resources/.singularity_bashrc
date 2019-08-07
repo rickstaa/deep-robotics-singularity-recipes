@@ -10,11 +10,6 @@
 #########################################################################
 
 ####################################
-### bashrc parameters ##############
-####################################
-CONT_SITE='https://deep-robotics.dev'
-
-####################################
 ### Main bashrc settings ###########
 ####################################
 
@@ -92,11 +87,6 @@ if [ -f "/opt/ros/kinetic/setup.bash" ]; then
     source "/opt/ros/kinetic/setup.bash"
 fi
 
-## Source user .singularity_bashrc ##
-if [ -f "~/.singularity_bashrc" ]; then
-    source "~/.singularity_bashrc"
-fi
-
 ## Source conda initialization script ##
 if [ -f "/.conda_init" ]; then
     source "/.conda_init"
@@ -109,7 +99,17 @@ fi
 
 ## Source bash aliases ##
 if [ -f "/.singularity_bash_aliases" ]; then
-    source ".singularity_bash_aliases"
+    source "/.singularity_bash_aliases"
+fi
+
+## Source welcome message .welcome_msg ##
+if [ -f "/.welcome_msg" ]; then
+    source "/.welcome_msg"
+fi
+
+## Source user .singularity_bashrc ##
+if [ -f "~/.singularity_bashrc" ]; then
+    source "~/.singularity_bashrc"
 fi
 
 ## Run script input args ##
