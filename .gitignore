@@ -1,6 +1,7 @@
 # Folders to ignore
 docsrc/build
 docsrc/source/_build
+.vscode
 
 # Files to exclude
 microsoft.gpg
