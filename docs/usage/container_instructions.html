@@ -97,8 +97,8 @@
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Container build instructions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html#container-use-instructions">Container use instructions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html#additional-instructions">Additional instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html#container-run-instructions">Container run instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html#additional-container-instructions">Additional container instructions</a></li>
 </ul>
 <p class="caption"><span class="caption-text">License</span></p>
 <ul>
@@ -192,10 +192,8 @@ as a writeable folder.</p>
 <p>You need root access to build from a recipe file.</p>
 </div>
 </div>
-<div class="section" id="container-use-instructions">
-<h1>Container use instructions<a class="headerlink" href="#container-use-instructions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="run-instructions">
-<h2>Run instructions<a class="headerlink" href="#run-instructions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="container-run-instructions">
+<h1>Container run instructions<a class="headerlink" href="#container-run-instructions" title="Permalink to this headline">¶</a></h1>
 <p>After the container is built, you can use the singularity <code class="docutils literal notranslate"><span class="pre">shell</span></code>,
 <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">run</span></code> commands to interact with the container.
 You are advised to use the <code class="docutils literal notranslate"><span class="pre">run</span></code> command since this also sources
@@ -209,6 +207,68 @@ container using one of the following <code class="docutils literal notranslate">
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Additionally, you can also add the <code class="docutils literal notranslate"><span class="pre">--writable</span></code> parameter to the <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">command</span></code> to receive write permissions.</p>
+</div>
+</div>
+<div class="section" id="additional-container-instructions">
+<h1>Additional container instructions<a class="headerlink" href="#additional-container-instructions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="container-aliases">
+<h2>Container aliases<a class="headerlink" href="#container-aliases" title="Permalink to this headline">¶</a></h2>
+<p>To increase convenience a number of bash aliases were added to the containers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">atf</span></code>: activates the tf-gpu conda environment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dconda</span></code>: deactivates the conda enviroment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rsource</span></code>: sources the ROS setup.bash file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rossu</span></code>: sources the setup.bash file at <code class="docutils literal notranslate"><span class="pre">./devel/setup.bash</span></code></p></li>
+</ul>
+<p>You can unset these aliases or add additional aliases by
+creating a <code class="docutils literal notranslate"><span class="pre">~/.singularity_bash_aliases</span></code> file in your user home directory.
+If such a <code class="docutils literal notranslate"><span class="pre">~/.singularity_bash_aliases</span></code>
+file is present in your home folder, it will be sourced after the container its
+<code class="docutils literal notranslate"><span class="pre">~/.singularity_bash_aliases</span></code> file.</p>
+</div>
+<div class="section" id="container-bashrc">
+<h2>Container .bashrc<a class="headerlink" href="#container-bashrc" title="Permalink to this headline">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">.singularity_bashrc</span></code> file is present inside the containers. This file is
+sourced when you run the container. You can overload all of the commands,
+aliases and settings contained in this <code class="docutils literal notranslate"><span class="pre">.singularity_bashrc</span></code> file by creating
+your own <code class="docutils literal notranslate"><span class="pre">~/.singularity_bashrc</span></code> file in your home folder. If such a <code class="docutils literal notranslate"><span class="pre">~/.singularity_bashrc</span></code>
+file is present in your home folder, it will be sourced after the container its
+<code class="docutils literal notranslate"><span class="pre">~/.singularity_bashrc</span></code> file.</p>
+</div>
+<div class="section" id="container-permissions">
+<h2>Container permissions<a class="headerlink" href="#container-permissions" title="Permalink to this headline">¶</a></h2>
+<p>By default your user can not write to the container folder when begin outside
+of the container. If you did build the singularity container as a writeable folder
+you can give your user write and read access from outside the singularity
+container by:</p>
+<ol class="arabic simple">
+<li><p>Changing the group owner to your user group.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo chgrp -R &lt;YOUR_USER_NAME&gt; ./&lt;YOUR_CONTAINER_NAME&gt;
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Giving your user group _read and write_ access to the <code class="docutils literal notranslate"><span class="pre">&lt;YOUR_CONTAINER_NAME</span></code> folder.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo chmod -R g+rwx ./&lt;YOUR_CONTAINER_NAME&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-a-visual-code-ide-to-the-singularity-container">
+<h2>Add a visual code IDE to the singularity container<a class="headerlink" href="#add-a-visual-code-ide-to-the-singularity-container" title="Permalink to this headline">¶</a></h2>
+<p>Visual studio code can be added to the singularity container in order to enable
+easy code debugging. This is done as follows:</p>
+<ol class="arabic simple">
+<li><p>Run your container using the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">singularity</span> <span class="pre">run</span> <span class="pre">--writable</span> <span class="pre">&lt;YOUR_CONTAINER_NAME&gt;</span></code></p></li>
+<li><p>Install visual code or visual code-insiders using the following bash commands:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl https://packages.microsoft.com/keys/microsoft.asc <span class="p">|</span> gpg --dearmor &gt; microsoft.gpg
+sudo install -o root -g root -m <span class="m">644</span> microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c <span class="s1">&#39;echo &quot;deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main&quot; &gt; /etc/apt/sources.list.d/vscode.list&#39;</span>
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install code <span class="c1"># or code-insiders</span>
+</pre></div>
 </div>
 </div>
 </div>

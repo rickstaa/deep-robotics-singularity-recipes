@@ -61,8 +61,8 @@ with the following packages installed in it:
 .. note::
     All of the above NVIDIA containers further contains an additional ``tf-gpu``
     conda environment which is automatically activated when you run the container.
-    You can disable this by removing the ``conda activate tf-gpu`` line in
-    the ``/.singularity_bashrc`` file.
+    You can disable this behaviour by adding a ``~/.singularity_bashrc`` file containing
+    a ``conda deactivate``  command to your home folder.
 
 
 AMD container recipes

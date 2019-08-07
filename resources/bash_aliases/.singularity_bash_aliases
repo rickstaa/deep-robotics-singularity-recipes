@@ -1,9 +1,14 @@
 ## Bash aliases ##
 
-# Default aliases
+# Default aliases #
 alias atf='conda activate tf-gpu'
 alias dtf='conda deactivate'
 alias dconda='conda deactivate'
 alias rsource='. /opt/ros/kinetic/setup.bash'
 alias rossu='. ./devel/setup.bash'
 alias sudo=''
+
+# Source user aliases #
+if [ -f "~/.singularity_bash_aliases" ]; then
+    source "~/.singularity_bash_aliases"
+fi
