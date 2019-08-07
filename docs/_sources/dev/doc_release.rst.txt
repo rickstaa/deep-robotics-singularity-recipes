@@ -10,7 +10,7 @@ Building
 Building `deep_robotics`_ 's documentation requires `sphinx <http://www.sphinx-doc.org/en/master>`_
 and a few plugins.
 
-To install the required dependencies, go to the ``panda_autograsp``
+To install the required dependencies, go to the ``deep_robotics_singularity_recipes``
 directory and run ::
 
     $ pip install .[docs]

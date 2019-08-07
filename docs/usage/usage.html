@@ -240,16 +240,16 @@ file is present in your home folder, it will be sourced after the container its
 <p>A <code class="docutils literal notranslate"><span class="pre">.singularity_bashrc</span></code> file is present inside the containers. This file is
 sourced when you run the container. You can overload all of the commands,
 aliases and settings contained in this <code class="docutils literal notranslate"><span class="pre">.singularity_bashrc</span></code> file by creating
-your own <code class="docutils literal notranslate"><span class="pre">~/.singularity_bashrc</span></code> file in your home folder. If such a <code class="docutils literal notranslate"><span class="pre">~/.singularity_bashrc</span></code>
-file is present in your home folder, it will be sourced after the container its
-<code class="docutils literal notranslate"><span class="pre">~/.singularity_bashrc</span></code> file.</p>
+your own <code class="docutils literal notranslate"><span class="pre">~/.singularity_bashrc</span></code> file in your home folder. If such a
+<code class="docutils literal notranslate"><span class="pre">~/.singularity_bashrc</span></code> file is present in your home folder, it will
+be sourced after the container its <code class="docutils literal notranslate"><span class="pre">~/.singularity_bashrc</span></code> file.</p>
 </div>
 <div class="section" id="container-permissions">
 <h2>Container permissions<a class="headerlink" href="#container-permissions" title="Permalink to this headline">¶</a></h2>
 <p>By default your user can not write to the container folder when begin outside
-of the container. If you did build the singularity container as a writeable folder
-you can give your user write and read access from outside the singularity
-container by:</p>
+of the container. If you did build the singularity container as a writeable
+folder you can give your user write and read access from outside the
+singularity container by:</p>
 <ol class="arabic simple">
 <li><p>Changing the group owner to your user group.</p></li>
 </ol>
@@ -278,6 +278,11 @@ sudo apt-get install apt-transport-https
 sudo apt-get update
 sudo apt-get install code <span class="c1"># or code-insiders</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since visual code requires the /run folder you need to add the <code class="docutils literal notranslate"><span class="pre">-B</span> <span class="pre">/run</span></code> argument when running a singularity container.
+For more information see <a class="reference external" href="https://github.com/sylabs/singularity/issues/3609">this issue</a>.</p>
 </div>
 </div>
 </div>
