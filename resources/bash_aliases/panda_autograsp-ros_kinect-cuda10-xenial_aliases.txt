@@ -7,3 +7,4 @@ unalias dtf
 # Add new aliases #
 alias agrasp='conda activate autograsp'
 alias dgrasp='conda deactivate autograsp'
+alias pbuild='. /opt/ros/kinetic/setup.bash; catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build'
