@@ -1,0 +1,9 @@
+## Panda_autograsp-ros_kinectic-cuda10-xenial aliases ##
+
+# Unalias default aliases #
+unalias atf
+unalias dtf
+
+# Add new aliases #
+alias agrasp='conda activate autograsp'
+alias dgrasp='conda deactivate autograsp'

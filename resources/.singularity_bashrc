@@ -92,14 +92,5 @@ if [ -f "/opt/ros/kinetic/setup.bash" ]; then
     source "/opt/ros/kinetic/setup.bash"
 fi
 
-# Other aliases
-alias atf='conda activate tf-gpu'
-alias dtf='conda deactivate'
-alias rsource='. /opt/ros/kinetic/setup.bash'
-alias psource='. /panda_autograsp_ws/devel/setup.bash'
-alias rossu='. ./devel/setup.bash'
-alias sudo=''
-alias code='code-insiders'
-
 ## Run script input args ##
 exec "$@"
