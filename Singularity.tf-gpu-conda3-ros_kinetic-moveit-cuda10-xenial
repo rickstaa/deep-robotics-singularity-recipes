@@ -62,6 +62,11 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     apt clean
     rm -rf /var/lib/apt/lists/*
 
+    ## Install opencl dependencies
+    apt install -q -y\
+        nvidia-modprobe \
+        opencl-headers
+
     ## Fix system python dependencies
     apt update --fix-missing
     apt install -q -y\

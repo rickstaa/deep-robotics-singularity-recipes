@@ -73,6 +73,11 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     apt clean
     rm -rf /var/lib/apt/lists/*
 
+    ## Install opencl dependencies
+    apt install -q -y\
+        nvidia-modprobe \
+        opencl-headers
+
     ## Fix system python dependencies
     apt update --fix-missing
     apt install -q -y\
@@ -87,7 +92,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         libxext6 \
         libglib2.0-0 \
         libxrender1 \
-	libgtk2.0-dev
+	    libgtk2.0-dev
 
     ## Install pip (`apt-get install python-pip` causes trouble w/ networkx).
     curl -O https://bootstrap.pypa.io/get-pip.py && \
