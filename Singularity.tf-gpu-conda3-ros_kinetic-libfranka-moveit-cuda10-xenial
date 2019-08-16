@@ -119,10 +119,9 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     wget --quiet https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /miniconda.sh
     /bin/bash /miniconda.sh -b -p /opt/conda
     rm /miniconda.sh
-    /opt/conda/bin/conda clean -tipsy
-    . /opt/conda/etc/profile.d/conda.sh
-    conda install -q -y python=3
-    conda update -y conda
+    /opt/conda/bin/conda clean --all
+    /opt/conda/bin/conda install -q -y python=3
+    /opt/conda/bin/conda update -y conda
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 
     ## Add conda enviroment activation command to .singularity_bashrc ##
@@ -131,19 +130,15 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     echo "conda activate tf-gpu" >> /.singularity_bashrc
 
     ## Create tf-gpu enviroment ##
-    conda create -q -y -n tf-gpu python=3.7
-    conda activate tf-gpu
-    pip install rospkg
+    /opt/conda/bin/conda create -q -y -n tf-gpu python=3.7
+    /opt/conda/bin/conda activate tf-gpu
 
     ## Install python packages ##
-    conda install -y tensorflow-gpu
+    /opt/conda/bin/conda install -y tensorflow-gpu
     #conda install -y jupyter
-    conda update --all
+    /opt/conda/bin/conda update --all
 
-    ## Install pip (`apt-get install python-pip` causes trouble w/ networkx).
-    curl -O https://bootstrap.pypa.io/get-pip.py && \
-	    python get-pip.py && \
-        rm get-pip.py
+    ## Install pip in environment (`apt-get install python-pip` causes trouble w/ networkx).
     curl -O https://bootstrap.pypa.io/get-pip.py && \
 	    python3 get-pip.py && \
         rm get-pip.py
