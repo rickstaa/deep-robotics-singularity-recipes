@@ -114,25 +114,26 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     wget --quiet https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /miniconda.sh
     /bin/bash /miniconda.sh -b -p /opt/conda
     rm /miniconda.sh
-    /opt/conda/bin/conda clean --all
-    /opt/conda/bin/conda install -q -y python=3
-    /opt/conda/bin/conda update -y conda
+    . /opt/conda/etc/profile.d/conda.sh
+    conda clean -y --all
+    conda install -q -y python=3
+    conda update -y conda
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 
     ## Add conda enviroment activation command to .singularity_bashrc ##
     echo "" >> /.singularity_bashrc
-    echo "## Activate autograsp enviroment" >> /.singularity_bashrc
+    echo "## Activate tf-gpu enviroment" >> /.singularity_bashrc
     echo "conda activate tf-gpu" >> /.singularity_bashrc
 
     ## Create tf-gpu enviroment ##
-    /opt/conda/bin/conda create -q -y -n tf-gpu python=3.7
-    . /etc/profile.d/conda.sh
-    /opt/conda/bin/conda activate tf-gpu
+    conda create -q -y -n tf-gpu python=3.7
+    conda activate tf-gpu
+    chmod -R a+w /opt/conda/envs/tf-gpu # Make env available to all singularity users
 
     ## Install python packages ##
-    /opt/conda/bin/conda install -y tensorflow-gpu
+    conda install -y tensorflow-gpu
     #conda install -y jupyter
-    /opt/conda/bin/conda update --all
+    conda update --all
 
     ## Install pip in environment (`apt-get install python-pip` causes trouble w/ networkx).
     curl -O https://bootstrap.pypa.io/get-pip.py && \

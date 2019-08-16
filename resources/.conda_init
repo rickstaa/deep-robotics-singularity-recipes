@@ -13,3 +13,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+conda deactivate # Needed if container started from within other conda environment
+conda deactivate
