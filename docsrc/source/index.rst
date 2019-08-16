@@ -6,7 +6,7 @@ Welcome to Deep robotics singularity recipes documentation!
 =============================================================================
 
 This repository contains singularity recipes that might be used for robotics
-projects. These recipes are also published on the `www.singularity-hub.org <https://www.singularity-hub.org>`_
+projects. These recipes are also published on the `www.singularity-hub.org <https://singularity-hub.org/collections/3335>`_
 container registry. You are invited to add additional singularity recipes
 to this repository (see the :ref:`contributing`).
 

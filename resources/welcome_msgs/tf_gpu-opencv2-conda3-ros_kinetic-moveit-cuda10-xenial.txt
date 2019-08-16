@@ -23,6 +23,6 @@ cat<<TF
  /\ (/_ | | | (_| | 
 TF
 echo -e "\e[0;33m"
-echo "Welcome to the deep_robotics:tf-gpu-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial HPC singularity container."
+echo "Welcome to the deep_robotics:tf_gpu-opencv2-conda3-ros_kinetic-moveit-cuda10-xenial HPC singularity container."
 echo "For more information about this container see ($CONT_SITE)."
 echo -e "\e[m"

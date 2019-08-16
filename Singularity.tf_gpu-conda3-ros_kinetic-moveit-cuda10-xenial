@@ -27,6 +27,9 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 %environment
     ## Set ROS distro variable ##
     ROS_DISTRO=kinetic
+
+    ## Cuda samples env var ##
+    export NVCUDASAMPLES_ROOT=/opt/NVIDIA_CUDA-10.0_Samples
 %post
     ## Install system package dependencies ##
     apt update --fix-missing
@@ -58,7 +61,8 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         unzip \
         cmake \
         pkg-config \
-	wget
+	    wget \
+        tree
     apt clean
     rm -rf /var/lib/apt/lists/*
 
@@ -101,7 +105,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         && cp /deep_robotics_singularity_recipes/resources/.singularity_bashrc /.singularity_bashrc \
         && cp /deep_robotics_singularity_recipes/resources/.conda_init /.conda_init \
         && cp /deep_robotics_singularity_recipes/resources/.conda_wrapper /.conda_wrapper \
-        && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/panda_autograsp-ros_kinect-cuda10-xenial.txt /.welcome_msg \
+        && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/tf_gpu-conda3-ros_kinetic-moveit-cuda10-xenial.txt /.welcome_msg \
         && cp /deep_robotics_singularity_recipes/resources/bash_aliases/.singularity_bash_aliases /.singularity_bash_aliases \
         && rm -rf /deep_robotics_singularity_recipes"
 
@@ -121,6 +125,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
     ## Create tf-gpu enviroment ##
     /opt/conda/bin/conda create -q -y -n tf-gpu python=3.7
+    . /etc/profile.d/conda.sh
     /opt/conda/bin/conda activate tf-gpu
 
     ## Install python packages ##
@@ -166,6 +171,15 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
        python-wstool \
        python-rosinstall \
        python-rosinstall-generator
+
+    ## Download cuda10.0 samples and set cmake variables ##
+    bash -c "cd /opt \
+        && git clone https://github.com/NVIDIA/cuda-samples \
+        && mv cuda-samples NVIDIA_CUDA-10.0_Samples \
+        && cd NVIDIA_CUDA-10.0_Samples \
+        && mv Samples samples \
+        && mv Common common \
+        && git checkout v10.0"
 
     ## Upgrade packages and remove unused packages ##
     apt upgrade -y -q

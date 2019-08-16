@@ -5,9 +5,9 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 %help
     A HPC Singularity container containing the following packages:
         - ros_kinetic
-        - libfranka
         - moveit
         - tensorflow_gpu
+        - opencv2
         - miniconda3
         - CUDA 10
         - CUDNN 7
@@ -26,17 +26,11 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     Version: v0.0.8
     Type: Private
 %environment
-    ## Set ROS distro var ##
+    ## Set ROS distro variable ##
     ROS_DISTRO=kinetic
 
     ## Cuda samples env var ##
     export NVCUDASAMPLES_ROOT=/opt/NVIDIA_CUDA-10.0_Samples
-
-    ## Libfreenect2 conf env var ##
-    export LIBFREENECT2_INSTALL_PREFIX=/opt/freenect2/
-
-    ## Freenect2 lib env var ##
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/freenect2/lib
 %post
     ## Install system package dependencies ##
     apt update --fix-missing
@@ -68,9 +62,15 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         unzip \
         cmake \
         pkg-config \
-        wget
+	    wget \
+        tree
     apt clean
     rm -rf /var/lib/apt/lists/*
+
+    ## Install opencl dependencies
+    apt install -q -y\
+        nvidia-modprobe \
+        opencl-headers
 
     ## Fix system python dependencies
     apt update --fix-missing
@@ -86,12 +86,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         libxext6 \
         libglib2.0-0 \
         libxrender1 \
-	    libgtk2.0-dev
-
-    ## Install opencl dependencies
-    apt install -q -y\
-        nvidia-modprobe \
-        opencl-headers
+        libgtk2.0-dev
 
     ## Install pip (`apt-get install python-pip` causes trouble w/ networkx).
     curl -O https://bootstrap.pypa.io/get-pip.py && \
@@ -111,7 +106,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         && cp /deep_robotics_singularity_recipes/resources/.singularity_bashrc /.singularity_bashrc \
         && cp /deep_robotics_singularity_recipes/resources/.conda_init /.conda_init \
         && cp /deep_robotics_singularity_recipes/resources/.conda_wrapper /.conda_wrapper \
-        && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/panda_autograsp-ros_kinect-cuda10-xenial.txt /.welcome_msg \
+        && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/tf_gpu-opencv2-conda3-ros_kinetic-moveit-cuda10-xenial.txt /.welcome_msg \
         && cp /deep_robotics_singularity_recipes/resources/bash_aliases/.singularity_bash_aliases /.singularity_bash_aliases \
         && rm -rf /deep_robotics_singularity_recipes"
 
@@ -131,6 +126,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
     ## Create tf-gpu enviroment ##
     /opt/conda/bin/conda create -q -y -n tf-gpu python=3.7
+    . /etc/profile.d/conda.sh
     /opt/conda/bin/conda activate tf-gpu
 
     ## Install python packages ##
@@ -142,6 +138,10 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     curl -O https://bootstrap.pypa.io/get-pip.py && \
 	    python3 get-pip.py && \
         rm get-pip.py
+
+    ## Install opencv ##
+    pip uninstall opencv-python -y
+    conda install -y -c conda-forge opencv
 
     ## setup ROS keys and sources.list ##
     echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list
@@ -177,20 +177,14 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
        python-rosinstall \
        python-rosinstall-generator
 
-    ## Install libfranca from source ##
-    bash -c "cd / \
-        && apt install -q -y ros-kinetic-libfranka ros-kinetic-franka-ros \
-        && apt install -q -y libpoco-dev libeigen3-dev \
-        && apt remove -y "*libfranka*" \
-        && git clone --recursive https://github.com/frankaemika/libfranka.git \
-        && cd /libfranka \
-        && mkdir build \
-        && cd build \
-        && cmake -DCMAKE_BUILD_TYPE=Release .. \
-        && cmake --build ."
-
-    ## Install opencv ##
-    conda install -y -c conda-forge opencv
+    ## Download cuda10.0 samples and set cmake variables ##
+    bash -c "cd /opt \
+        && git clone https://github.com/NVIDIA/cuda-samples \
+        && mv cuda-samples NVIDIA_CUDA-10.0_Samples \
+        && cd NVIDIA_CUDA-10.0_Samples \
+        && mv Samples samples \
+        && mv Common common \
+        && git checkout v10.0"
 
     ## Upgrade packages and remove unused packages ##
     apt upgrade -y -q

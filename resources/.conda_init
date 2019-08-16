@@ -6,7 +6,7 @@ if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
     if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
-        source "/opt/conda/etc/profile.d/conda.sh"
+        . "/opt/conda/etc/profile.d/conda.sh"
     else
         export PATH="/opt/conda/bin:$PATH"
     fi
