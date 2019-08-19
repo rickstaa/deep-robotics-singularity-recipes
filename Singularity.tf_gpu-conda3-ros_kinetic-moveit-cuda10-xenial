@@ -149,7 +149,6 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
     # bootstrap rosdep
     rosdep init
-    rosdep update
 
     ## Install MoveIt and ros building packages
     rosdep update
