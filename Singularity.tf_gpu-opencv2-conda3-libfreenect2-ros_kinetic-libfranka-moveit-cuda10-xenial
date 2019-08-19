@@ -127,6 +127,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     conda install -q -y python=3
     conda update -y conda
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+    chmod -R a+w /opt/conda # Make the conda install folder is available to all singularity users
 
     ## Add conda enviroment activation command to .singularity_bashrc ##
     echo "" >> /.singularity_bashrc
@@ -136,7 +137,6 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     ## Create tf-gpu enviroment ##
     conda create -q -y -n tf-gpu python=3.7
     conda activate tf-gpu
-    chmod -R a+w /opt/conda # Make the conda install folder is available to all singularity users
 
     ## Install python packages ##
     conda install -y tensorflow-gpu
