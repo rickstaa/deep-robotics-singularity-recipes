@@ -9,8 +9,7 @@ export CONDA_PATH
 
 # Initialize conda wrapper function
 function _conda_wrapper {
-    if [ $1 == "activate" ] # Warp conda deactivate command
-    then
+    if [ $1 == "activate" ]; then # Warp conda deactivate command
 
         # Get conda site-pack folder
         _conda_site_packages=$(find "$CONDA_PATH"/envs/"$2" -iname site-packages)
@@ -23,8 +22,7 @@ function _conda_wrapper {
 
         # Run conda activate command
         conda $@
-    elif [ $1 == "deactivate" ] # Warp conda deactivate command
-    then
+    elif [ $1 == "deactivate" ]; then # Warp conda deactivate command
 
         # Remove conda site-packages folder from the PYTHONPATH
         PYTHONPATH=$_OLD_PYTHONPATH
