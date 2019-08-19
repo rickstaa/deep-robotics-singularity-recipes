@@ -128,7 +128,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     ## Create tf-gpu enviroment ##
     conda create -q -y -n tf-gpu python=3.7
     conda activate tf-gpu
-    chmod -R a+w /opt/conda/envs/tf-gpu # Make env available to all singularity users
+    chmod -R a+w /opt/conda # Make the conda install folder is available to all singularity users
 
     ## Install python packages ##
     conda install -y tensorflow-gpu
@@ -139,6 +139,16 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     curl -O https://bootstrap.pypa.io/get-pip.py && \
 	    python3 get-pip.py && \
         rm get-pip.py
+
+    ## Install autograsp additional packages ##
+    pip install empy \
+        rospkg \
+        catkin_pkg \
+        pyyaml
+
+    ## Install additional ROS package system dependencies ##
+    apt install -q -y python3-empy \
+        python3-yaml
 
     ## setup ROS keys and sources.list ##
     echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list
