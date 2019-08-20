@@ -29,6 +29,13 @@ For more information about each of the recipes see [the documentation](https://w
 
 Please see the [docs](https://deep-robotics.dev) for installation and usage instructions.
 
+## Contributing
+Contributions to this repository are welcome. See the [contribution guidelines](contributing.md) for more information.
+
+## License
+
+[MIT](LICENSE)
+
 ## References
 
 -   Icon created with svg made by [@Eucalyp](https://www.flaticon.com/authors/eucalyp) from [www.flaticon.com](https://www.flaticon.com/authors/eucalyp)
