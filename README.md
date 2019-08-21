@@ -1,6 +1,6 @@
 # Deep Robotics singularity recipe repository
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6f888b75cf6244238ce54768e5fd804b)](https://app.codacy.com/app/rickstaa/deep_robotics_singularity_recipes?utm_source=github.com&utm_medium=referral&utm_content=rickstaa/deep_robotics_singularity_recipes&utm_campaign=Badge_Grade_Settings)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cb1f1d6154514f3fa35a504c03c64149)](https://www.codacy.com/app/rickstaa/deep_robotics_singularity_recipes?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rickstaa/deep_robotics_singularity_recipes&amp;utm_campaign=Badge_Grade)
 [![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/3134)
 [![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green)](https://github.com/rickstaa/Todoist_Global_Shortcuts_WIN10/pulse)
 [![Contributions](https://img.shields.io/badge/contributions-welcome-orange.svg)](https://github.com/rickstaa/Todoist_Global_Shortcuts_WIN10/blob/master/contributing.md)
