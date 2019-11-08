@@ -1,4 +1,4 @@
-## Panda_autograsp-ros_kinectic-cuda10-xenial aliases ##
+## Panda_autograsp aliases ##
 
 # Unalias default aliases #
 unalias atf
@@ -7,4 +7,4 @@ unalias dtf
 # Add new aliases #
 alias agrasp='conda activate autograsp'
 alias dgrasp='conda deactivate'
-alias pbuild='. /opt/ros/kinetic/setup.bash; catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build -Dfreenect2_DIR=/opt/freenect2/lib/cmake/freenect2'
+alias pbuild='. /opt/ros/"$ROS_DISTRO"/setup.bash; catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build -Dfreenect2_DIR=/opt/freenect2/lib/cmake/freenect2'

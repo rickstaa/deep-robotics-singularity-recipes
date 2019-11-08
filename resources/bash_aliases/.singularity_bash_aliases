@@ -4,7 +4,7 @@
 alias atf='conda activate tf-gpu'
 alias dtf='conda deactivate'
 alias dconda='conda deactivate'
-alias rsource='. /opt/ros/kinetic/setup.bash'
+alias rsource='. /opt/ros/"$ROS_DISTRO"/setup.bash'
 alias rossu='. ./devel/setup.bash'
 alias sudo=''
 
