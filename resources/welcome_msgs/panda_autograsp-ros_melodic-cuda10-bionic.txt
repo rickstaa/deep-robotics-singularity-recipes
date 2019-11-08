@@ -18,8 +18,9 @@ cat<<TF
 TF
 echo -e "\e[0;36m"
 cat<<TF
- \/  _  ._  o  _. | 
- /\ (/_ | | | (_| | 
+ _                
+|_) o  _ __  o  _ 
+|_) | (_)| | | (_ 
 TF
 echo -e "\e[0;33m"
 echo "Welcome to the panda_autograsp:ros_melodic-cuda10-bionic HPC singularity container."
