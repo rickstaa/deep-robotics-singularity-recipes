@@ -24,7 +24,7 @@ author = 'Rick Staa'
 
 # The full version, including alpha/beta/rc tags
 version = "0.0"
-release = '0.0.8'
+release = '0.0.9'
 
 # -- General configuration ---------------------------------------------------
 
