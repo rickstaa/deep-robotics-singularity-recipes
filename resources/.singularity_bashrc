@@ -92,11 +92,11 @@ if [ -f "/.conda_init" ]; then
     . "/.conda_init"
 fi
 
-## Source conda wrapper script ##
-if [ -f "/.conda_wrapper" ]; then
-    . "/.conda_wrapper"
+## Source conda wrapper script
+if [ -f "$HOME/.ros_conda_wrapper_rc" ]; then
+    . "$HOME/.ros_conda_wrapper_rc"
 fi
-
+    
 ## Source bash aliases ##
 if [ -f "/.singularity_bash_aliases" ]; then
     . "/.singularity_bash_aliases"
