@@ -1,0 +1,9 @@
+## Panda_autograsp aliases ##
+
+# Unalias default aliases #
+unalias atf
+unalias dtf
+unalias dconda
+
+# Add new aliases #
+alias pbuild='. /opt/ros/"$ROS_DISTRO"/setup.bash; catkin build -j4 -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/libfranka/build'
