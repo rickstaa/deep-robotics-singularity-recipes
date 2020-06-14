@@ -1,27 +1,27 @@
 ## Container parameters ##
-CONT_SITE='https://github.com/rickstaa/panda_openai_sim'
+CONT_SITE='https://github.com/rickstaa/panda_openai_ros'
 
 ## Welcome message ##
 export TERM=xterm-256color
 echo -e "\e[1;31m"
 cat<<TF
-┌─┐┌─┐┌┐┌┌┬┐┌─┐    ┌─┐┌─┐┌─┐┌┐┌┌─┐┬    ┌─┐┬┌┬┐
-├─┘├─┤│││ ││├─┤    │ │├─┘├┤ │││├─┤│    └─┐││││
-┴  ┴ ┴┘└┘─┴┘┴ ┴────└─┘┴  └─┘┘└┘┴ ┴┴────└─┘┴┴ ┴
-TF
+___ _____  ____ ____   _______ _____  ______   ______  _
+|__]|__||\ ||  \|__|   |  ||__]|___|\ ||__||   [__ ||\/|
+|   |  || \||__/|  |___|__||   |___| \||  ||______]||  |
+TF # FONT=JS Stick Letters
 echo -e "\e[0;37m"
 cat<<TF
 ╦═╗╔═╗╔═╗  ┌┬┐┌─┐┬  ┌─┐┌┬┐┬┌─┐
-╠╦╝║ ║╚═╗  │││├┤ │  │ │ ││││  
+╠╦╝║ ║╚═╗  │││├┤ │  │ │ ││││
 ╩╚═╚═╝╚═╝  ┴ ┴└─┘┴─┘└─┘─┴┘┴└─┘
-TF
+TF # FONT=Calvin S
 echo -e "\e[0;36m"
 cat<<TF
- _                
-|_) o  _ __  o  _ 
-|_) | (_)| | | (_ 
-TF
+ _
+|_) o  _ __  o  _
+|_) | (_)| | | (_
+TF # FONT=Straight
 echo -e "\e[0;33m"
-echo "Welcome to the panda_openai_sim:ros_melodic-cuda10-bionic HPC singularity container."
+echo "Welcome to the panda_openai_ros:ros_melodic-cuda10-bionic HPC singularity container."
 echo "For more information about this container see ($CONT_SITE)."
 echo -e "\e[m"

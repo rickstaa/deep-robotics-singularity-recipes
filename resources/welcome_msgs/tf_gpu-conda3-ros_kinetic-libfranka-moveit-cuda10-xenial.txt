@@ -1,26 +1,26 @@
 ## Container parameters ##
-CONT_SITE='https://deep-robotics.dev'
+CONT_SITE='https://rickstaa.github.io/deep_robotics_singularity_recipes/'
 
 ## Welcome message ##
 export TERM=xterm-256color
 echo -e "\e[1;31m"
 cat<<TF
-________                               _______________                
+________                               _______________
 ___  __/__________________________________  ____/__  /________      __
 __  /  _  _ \_  __ \_  ___/  __ \_  ___/_  /_   __  /_  __ \_ | /| / /
-_  /   /  __/  / / /(__  )/ /_/ /  /   _  __/   _  / / /_/ /_ |/ |/ / 
+_  /   /  __/  / / /(__  )/ /_/ /  /   _  __/   _  / / /_/ /_ |/ |/ /
 /_/    \___//_/ /_//____/ \____//_/    /_/      /_/  \____/____/|__/
 TF
 echo -e "\e[0;37m"
 cat<<TF
 ╦═╗╔═╗╔═╗  ┬┌─┬┌┐┌┌─┐┌┬┐┬┌─┐
-╠╦╝║ ║╚═╗  ├┴┐││││├┤  │ ││  
+╠╦╝║ ║╚═╗  ├┴┐││││├┤  │ ││
 ╩╚═╚═╝╚═╝  ┴ ┴┴┘└┘└─┘ ┴ ┴└─┘
 TF
 echo -e "\e[0;36m"
 cat<<TF
- \/  _  ._  o  _. | 
- /\ (/_ | | | (_| | 
+ \/  _  ._  o  _. |
+ /\ (/_ | | | (_| |
 TF
 echo -e "\e[0;33m"
 echo "Welcome to the deep_robotics:tf_gpu-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial HPC singularity container."
