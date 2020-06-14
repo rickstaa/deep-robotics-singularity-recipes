@@ -68,9 +68,16 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     rm -rf /var/lib/apt/lists/*
 
     ## Install opencl dependencies
+    apt update
     apt install -q -y\
-        nvidia-modprobe \
-        opencl-headers
+        libglu1-mesa-dev \
+        libglm-dev \
+        libglew1.5-dev \
+        freeglut3 \
+        freeglut3-dev \
+        binutils-gold \
+        mesa-common-dev \
+        mesa-utilss
 
     ## Fix system python dependencies
     apt update --fix-missing
@@ -108,7 +115,9 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         && cp /deep_robotics_singularity_recipes/resources/.conda_wrapper /.conda_wrapper \
         && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/tf_gpu-opencv2-conda3-ros_kinetic-moveit-cuda10-xenial.txt /.welcome_msg \
         && cp /deep_robotics_singularity_recipes/resources/bash_aliases/.singularity_bash_aliases /.singularity_bash_aliases \
-        && rm -rf /deep_robotics_singularity_recipes"
+        && rm -rf /deep_robotics_singularity_recipes \
+        && cp /.ros_conda_wrapper/ros_conda_wrapper_rc /.conda_wrapper \
+        && rm -rf /.ros_conda_wrapper"
 
     ## Install miniconda3 ##
     wget --quiet https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /miniconda.sh
@@ -120,11 +129,6 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     conda update -y conda
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
     chmod -R a+w /opt/conda # Make the conda install folder is available to all singularity users
-
-    ## Add conda enviroment activation command to .singularity_bashrc ##
-    echo "" >> /.singularity_bashrc
-    echo "## Activate tf-gpu enviroment" >> /.singularity_bashrc
-    echo "conda activate tf-gpu" >> /.singularity_bashrc
 
     ## Create tf-gpu enviroment ##
     conda create -q -y -n tf-gpu python=3.7
@@ -187,14 +191,18 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
        python-rosinstall \
        python-rosinstall-generator
 
-    ## Download cuda10.0 samples and set cmake variables ##
+    # Download cuda10.0 samples and set cmake variables
     bash -c "cd /opt \
         && git clone https://github.com/NVIDIA/cuda-samples \
         && mv cuda-samples NVIDIA_CUDA-10.0_Samples \
         && cd NVIDIA_CUDA-10.0_Samples \
         && mv Samples samples \
         && mv Common common \
+        && mkdir inc \
+        && mv common/* inc \
+        && mv inc common/inc \
         && git checkout v10.0"
+    export NVCUDASAMPLES_ROOT=/opt/NVIDIA_CUDA-10.0_Samples
 
     ## Upgrade packages and remove unused packages ##
     apt upgrade -y -q
