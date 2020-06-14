@@ -1,7 +1,5 @@
 .. _recipes:
 
-.. _deep_robotics: https://github.com/rickstaa/deep_robotics_singularity_recipes/
-
 Recipes
 ==========================
 
