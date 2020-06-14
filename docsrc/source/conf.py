@@ -30,7 +30,12 @@ version = "0.1.0"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["sphinx.ext.napoleon", "sphinx.ext.autodoc", "sphinx.ext.autosummary"]
+extensions = [
+    "sphinx.ext.napoleon",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.extlinks",
+]
 autoclass_content = "class"
 autodoc_member_order = "bysource"
 autodoc_default_flags = ["members"]  # , "show-inheritance"]
@@ -295,3 +300,11 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node"s menu.
 # texinfo_no_detailmenu = False
+
+# -- External links dictionary -----------------------------------------------
+extlinks = {
+    "deep_robotics": (
+        "https://github.com/rickstaa/deep_robotics_singularity_recipes/%s",
+        None,
+    ),
+}
