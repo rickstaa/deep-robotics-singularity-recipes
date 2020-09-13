@@ -19,32 +19,32 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         - dconda:   Deactivate conda enviroment
 
     For more information see https://rickstaa.github.io/deep_robotics_singularity_recipes/.
+
 %labels
     Maintainer: Rick Staa
     Github: https://github.com/rickstaa
     Version: v0.1.0
-    Type: Private
+    Type: Public
+
 %environment
-    ## Set ROS distro variable ##
+    ## Set ROS distro var ##
     ROS_DISTRO=kinetic
 
     ## Cuda samples env var ##
     export NVCUDASAMPLES_ROOT=/opt/NVIDIA_CUDA-10.0_Samples
+
 %post
     ## Install system package dependencies ##
     apt update --fix-missing
     apt install -q -y\
         wget \
-        less \
         vim \
         git \
         bash-completion \
-        htop \
         ssh \
 		tar \
 		libevent-dev \
         libncurses-dev \
-        tmux \
 		nautilus \
         gedit \
         x11-xserver-utils \
@@ -60,9 +60,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         lsb-release \
         unzip \
         cmake \
-        pkg-config \
-	    wget \
-        tree
+        pkg-config
     apt clean
     rm -rf /var/lib/apt/lists/*
 
@@ -76,7 +74,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         freeglut3-dev \
         binutils-gold \
         mesa-common-dev \
-        mesa-utilss
+        mesa-utils
 
     ## Fix system python dependencies
     apt update --fix-missing
@@ -114,6 +112,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/tf_gpu-conda3-ros_kinetic-moveit-cuda10-xenial.txt /.welcome_msg \
         && cp /deep_robotics_singularity_recipes/resources/bash_aliases/.singularity_bash_aliases /.singularity_bash_aliases \
         && rm -rf /deep_robotics_singularity_recipes \
+        && git clone https://github.com/rickstaa/.ros_conda_wrapper \
         && cp /.ros_conda_wrapper/ros_conda_wrapper_rc /.conda_wrapper \
         && rm -rf /.ros_conda_wrapper"
 
@@ -203,6 +202,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
     apt autoremove -y -q
     apt autoclean -y -q
     rm -rf /var/lib/apt/lists/*
+
 %runscript
 	## Execute the .singularity_bashrc file ##
 	OCI_CMD='/bin/bash'
