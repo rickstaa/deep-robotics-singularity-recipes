@@ -50,6 +50,10 @@ The auto-changelog tool by [@CookPete](https://github.com/CookPete/) is a small 
 7.  Commit the changes using `git commit -m "Updated CHANGELOG.md"`.
 8.  You can now push your changes to github and submit a pull request.
 
+### Build the documentation
+
+To build the documentation go into the `docsrc` directory and run the `make clean` and `make html` command. This command will generate the html documentation inside the `docsrc/build` directory. After this is done you can deploy the documentation using the `make gh-pages` command. The documentation will then be places inside the `docs` directory.
+
 ## Code of Conduct
 
 ### Our Pledge
