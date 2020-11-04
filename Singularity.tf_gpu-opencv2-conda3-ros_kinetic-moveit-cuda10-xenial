@@ -24,7 +24,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 %labels
     Maintainer: Rick Staa
     Github: https://github.com/rickstaa
-    Version: v0.1.1
+    Version: v0.1.2
     Type: Public
 
 %environment
