@@ -21,7 +21,7 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
         - dtf:      Deactivate the tf-gpu conda enviroment
         - dconda:   Deactivate conda enviroment
 
-    For more information see https://rickstaa.github.io/deep_robotics_singularity_recipes/.
+    For more information see https://github.com/rickstaa/deep-robotics-singularity-recipes.
 
 %labels
     Maintainer: Rick Staa
@@ -114,12 +114,12 @@ From: nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
     ## Add container resources to the container ##
     bash -c "cd / \
-        && git clone https://github.com/rickstaa/deep_robotics_singularity_recipes.git \
-        && cp /deep_robotics_singularity_recipes/resources/.singularity_bashrc /.singularity_bashrc \
-        && cp /deep_robotics_singularity_recipes/resources/.conda_init /.conda_init \
-        && cp /deep_robotics_singularity_recipes/resources/welcome_msgs/tf_gpu-opencv2-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial.txt /.welcome_msg \
-        && cp /deep_robotics_singularity_recipes/resources/bash_aliases/.singularity_bash_aliases /.singularity_bash_aliases \
-        && rm -rf /deep_robotics_singularity_recipes \
+        && git clone https://github.com/rickstaa/deep-robotics-singularity-recipes.git \
+        && cp /deep-robotics-singularity-recipes/resources/.singularity_bashrc /.singularity_bashrc \
+        && cp /deep-robotics-singularity-recipes/resources/.conda_init /.conda_init \
+        && cp /deep-robotics-singularity-recipes/resources/welcome_msgs/tf_gpu-opencv2-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial.txt /.welcome_msg \
+        && cp /deep-robotics-singularity-recipes/resources/bash_aliases/.singularity_bash_aliases /.singularity_bash_aliases \
+        && rm -rf /deep-robotics-singularity-recipes \
         && git clone https://github.com/rickstaa/.ros_conda_wrapper \
         && cp /.ros_conda_wrapper/ros_conda_wrapper_rc /.conda_wrapper \
         && rm -rf /.ros_conda_wrapper"

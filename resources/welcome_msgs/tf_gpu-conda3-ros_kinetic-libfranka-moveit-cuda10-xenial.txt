@@ -1,5 +1,5 @@
 ## Container parameters ##
-CONT_SITE='https://rickstaa.github.io/deep_robotics_singularity_recipes/'
+CONT_SITE='https://github.com/rickstaa/deep-robotics-singularity-recipes'
 
 ## Welcome message ##
 export TERM=xterm-256color

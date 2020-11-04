@@ -1,6 +1,6 @@
 .. _doc_release:
 
-.. _deep_robotics: https://github.com/rickstaa/deep_robotics_singularity_recipes/
+.. _deep_robotics: https://github.com/rickstaa/deep-robotics-singularity-recipes/
 
 Release documentation
 ===================================
@@ -10,7 +10,7 @@ Building
 Building `deep_robotics`_ 's documentation requires `sphinx <http://www.sphinx-doc.org/en/master>`_
 and a few plugins.
 
-To install the required dependencies, go to the ``deep_robotics_singularity_recipes``
+To install the required dependencies, go to the ``deep-robotics-singularity-recipes``
 directory and run ::
 
     $ pip install .[docs]

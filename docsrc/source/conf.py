@@ -18,7 +18,7 @@ import sphinx_rtd_theme
 sys.path.insert(0, os.path.abspath("../.."))
 
 # -- Project information -----------------------------------------------------
-project = "deep_robotics_singularity_recipes"
+project = "deep-robotics-singularity-recipes"
 copyright = "2019, Rick Staa"
 author = "Rick Staa"
 
@@ -304,7 +304,7 @@ texinfo_documents = [
 # -- External links dictionary -----------------------------------------------
 extlinks = {
     "deep_robotics": (
-        "https://github.com/rickstaa/deep_robotics_singularity_recipes/%s",
+        "https://github.com/rickstaa/deep-robotics-singularity-recipes/%s",
         None,
     ),
 }

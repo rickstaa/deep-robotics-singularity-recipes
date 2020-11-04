@@ -1,4 +1,4 @@
-.. Deep_robotics_singularity_recipes documentation master file
+.. deep-robotics-singularity-recipes documentation master file
 
 Welcome to Deep robotics singularity recipes documentation!
 =============================================================================

@@ -5,12 +5,12 @@ Recipes
 
 This repository currently contains the following recipes:
 
--   `tf_gpu-conda3-ros_kinetic-moveit-cuda10-xenial <https://github.com/rickstaa/deep_robotics_singularity_recipes/blob/master/Singularity.tf_gpu-conda3-ros_kinetic-moveit-cuda10-xenial>`_
--   `tf_gpu-opencv2-conda3-ros_kinetic-moveit-cuda10-xenial <https://github.com/rickstaa/deep_robotics_singularity_recipes/blob/master/Singularity.tf_gpu-conda3-ros_kinetic-moveit-cuda10-xenial>`_
--   `tf_gpu-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial <https://github.com/rickstaa/deep_robotics_singularity_recipes/blob/master/Singularity.tf_gpu-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial>`_
--   `tf_gpu-opencv2-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial <https://github.com/rickstaa/deep_robotics_singularity_recipes/blob/master/Singularity.tf_gpu-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial>`_
--   `tf_gpu-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial <https://github.com/rickstaa/deep_robotics_singularity_recipes/blob/master/Singularity.tf_gpu-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial>`_
--   `tf_gpu-opencv2-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial <https://github.com/rickstaa/deep_robotics_singularity_recipes/blob/master/Singularity.tf_gpu-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial>`_
+-   `tf_gpu-conda3-ros_kinetic-moveit-cuda10-xenial <https://github.com/rickstaa/deep-robotics-singularity-recipes/blob/master/Singularity.tf_gpu-conda3-ros_kinetic-moveit-cuda10-xenial>`_
+-   `tf_gpu-opencv2-conda3-ros_kinetic-moveit-cuda10-xenial <https://github.com/rickstaa/deep-robotics-singularity-recipes/blob/master/Singularity.tf_gpu-conda3-ros_kinetic-moveit-cuda10-xenial>`_
+-   `tf_gpu-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial <https://github.com/rickstaa/deep-robotics-singularity-recipes/blob/master/Singularity.tf_gpu-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial>`_
+-   `tf_gpu-opencv2-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial <https://github.com/rickstaa/deep-robotics-singularity-recipes/blob/master/Singularity.tf_gpu-conda3-ros_kinetic-libfranka-moveit-cuda10-xenial>`_
+-   `tf_gpu-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial <https://github.com/rickstaa/deep-robotics-singularity-recipes/blob/master/Singularity.tf_gpu-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial>`_
+-   `tf_gpu-opencv2-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial <https://github.com/rickstaa/deep-robotics-singularity-recipes/blob/master/Singularity.tf_gpu-conda3-libfreenect2-ros_kinetic-libfranka-moveit-cuda10-xenial>`_
 
 NVIDIA container recipes
 -------------------------------------

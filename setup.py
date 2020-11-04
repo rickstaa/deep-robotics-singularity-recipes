@@ -93,7 +93,7 @@ setup(
     author="Rick Staa",
     author_email="rick.staa@outlook.com",
     license="Rick Staa Copyright",
-    url="https://github.com/rickstaa/deep_robotics_singularity_recipes",
+    url="https://github.com/rickstaa/deep-robotics-singularity-recipes",
     keywords="robotics deep learning singularity containers hpc",
     classifiers=[
         "Programming Language :: Python :: 3.5",
