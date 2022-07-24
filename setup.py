@@ -1,16 +1,15 @@
-"""Setup file of the `panda_autograsp` python package.
-
-This setup file was based upon the gqcnn setup.py file.
+"""
+Setup file of the `panda_autograsp` python package. This setup file was based upon the
+gqcnn setup.py file.
 """
 
 # Future Imports
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
 # Standard library imports
 import logging
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 from setuptools.command.develop import develop
 from setuptools.command.install import install
 
